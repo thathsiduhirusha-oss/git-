@@ -1,0 +1,19 @@
+{
+  "name": "al-ict-git-quiz-portal",
+  "version": "1.0.0",
+  "description": "Sri Lanka A/L ICT & GIT Quiz Portal with Google Sheets & Vercel Integration - By G.H. Hirusha thathsidu",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "al-ict",
+    "git-quiz",
+    "sri-lanka",
+    "quiz-portal",
+    "vercel",
+    "google-sheets"
+  ],
+  "author": "G.H. Hirusha thathsidu <thathsiduhirusha@gmail.com>",
+  "license": "MIT"
+}

@@ -1,0 +1,3736 @@
+<!DOCTYPE html>
+<html lang="si" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A/L ICT & GIT Quiz Portal | Sri Lanka - By G.H. Hirusha thathsidu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Sinhala:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --bg-main: #090d16;
+      --bg-card: rgba(17, 24, 39, 0.85);
+      --bg-card-border: rgba(255, 255, 255, 0.08);
+      --bg-card-hover: rgba(30, 41, 59, 0.7);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --primary-glow: rgba(99, 102, 241, 0.35);
+      --accent: #06b6d4;
+      --success: #10b981;
+      --success-glow: rgba(16, 185, 129, 0.3);
+      --danger: #ef4444;
+      --danger-glow: rgba(239, 68, 68, 0.3);
+      --warning: #f59e0b;
+      --wa-green: #25d366;
+      --wa-green-hover: #1ebc57;
+      --wa-glow: rgba(37, 211, 102, 0.35);
+      --font-main: 'Plus Jakarta Sans', 'Noto Sans Sinhala', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(37, 211, 102, 0.08) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      font-family: inherit;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      user-select: none;
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #4f46e5);
+      color: #fff;
+      box-shadow: 0 4px 14px var(--primary-glow);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #4f46e5, #4338ca);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      border-color: var(--bg-card-border);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .btn-whatsapp {
+      background: linear-gradient(135deg, var(--wa-green), #1ebc57);
+      color: #0b2912;
+      font-weight: 700;
+      box-shadow: 0 4px 15px var(--wa-glow);
+    }
+    .btn-whatsapp:hover {
+      background: linear-gradient(135deg, #2ae06f, #1aa34b);
+      color: #051c0b;
+      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
+    }
+    .btn-danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+    .btn-danger:hover {
+      background: var(--danger);
+      color: #fff;
+    }
+    .btn-sm {
+      padding: 0.45rem 0.85rem;
+      font-size: 0.85rem;
+      border-radius: 0.5rem;
+    }
+
+    /* Cards */
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Navbar */
+    .navbar {
+      border-bottom: 1px solid var(--bg-card-border);
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 0.85rem 0;
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo-badge {
+      background: linear-gradient(135deg, #6366f1, #06b6d4);
+      width: 42px;
+      height: 42px;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #fff;
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+    .logo-text h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .logo-text .creator-tag {
+      font-size: 0.75rem;
+      color: #38bdf8;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Channel Banner Top */
+    .channel-announcement {
+      background: linear-gradient(90deg, rgba(37, 211, 102, 0.15), rgba(6, 182, 212, 0.15));
+      border-bottom: 1px solid rgba(37, 211, 102, 0.25);
+      padding: 0.5rem 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .channel-announcement a {
+      color: #4ade80;
+      font-weight: 700;
+      text-decoration: underline;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .channel-announcement a:hover {
+      color: #86efac;
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      z-index: 99;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: white;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .floating-wa-btn:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.65);
+    }
+    .floating-wa-tooltip {
+      position: absolute;
+      right: 68px;
+      background: #1e293b;
+      color: #f1f5f9;
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .floating-wa-btn:hover .floating-wa-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Views */
+    .view-section {
+      display: none;
+      padding: 2rem 0;
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+    .view-section.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Auth Screens */
+    .auth-wrapper {
+      max-width: 480px;
+      margin: 1.5rem auto;
+    }
+    .auth-tabs {
+      display: flex;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 0.3rem;
+      border-radius: 0.9rem;
+      border: 1px solid var(--bg-card-border);
+      margin-bottom: 1.5rem;
+    }
+    .auth-tab-btn {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      border-radius: 0.65rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .auth-tab-btn.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 2px 8px var(--primary-glow);
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: #cbd5e1;
+    }
+    .form-label span.si {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 400;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 0.75rem;
+      color: #fff;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+    .auth-demo-box {
+      margin-top: 1.25rem;
+      padding: 0.85rem;
+      background: rgba(30, 41, 59, 0.5);
+      border-radius: 0.75rem;
+      font-size: 0.8rem;
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      color: #94a3b8;
+    }
+
+    /* Student Dashboard */
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.15));
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 1.25rem;
+      padding: 2.25rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    /* Quiz Screen */
+    .quiz-header {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 1rem;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .quiz-progress-bar-wrap {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .quiz-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #6366f1, #06b6d4);
+      transition: width 0.3s ease;
+    }
+    .timer-ring-box {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      background: rgba(15, 23, 42, 0.8);
+      padding: 0.4rem 0.9rem;
+      border-radius: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .timer-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: conic-gradient(var(--accent) var(--time-p, 100%), transparent 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .timer-badge::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      background: #0f172a;
+      border-radius: 50%;
+    }
+    .timer-val {
+      position: relative;
+      z-index: 1;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      font-weight: 800;
+    }
+
+    /* Question Card */
+    .question-box {
+      margin-bottom: 1.5rem;
+    }
+    .q-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .q-category-tag {
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 2rem;
+    }
+    .q-text-sinhala {
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+      color: #f1f5f9;
+    }
+    .q-text-english {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.5;
+      color: #94a3b8;
+      margin-bottom: 1.25rem;
+    }
+    .code-snippet-box {
+      background: #040810;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: #38bdf8;
+      margin-bottom: 1.25rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .table-snippet {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.25rem;
+      font-size: 0.875rem;
+    }
+    .table-snippet th, .table-snippet td {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.45rem 0.75rem;
+      text-align: center;
+    }
+    .table-snippet th {
+      background: rgba(30, 41, 59, 0.8);
+      color: #38bdf8;
+    }
+
+    /* Options */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0.9rem;
+      padding: 1rem 1.25rem;
+      color: var(--text-main);
+      cursor: pointer;
+      font-family: inherit;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .option-btn:hover:not(:disabled) {
+      background: rgba(30, 41, 59, 0.8);
+      border-color: rgba(99, 102, 241, 0.4);
+      transform: translateY(-2px);
+    }
+    .option-btn:disabled {
+      cursor: default;
+    }
+    .opt-letter {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 0.5rem;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #94a3b8;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .opt-content {
+      flex: 1;
+    }
+    .opt-sinhala {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #f8fafc;
+      margin-bottom: 0.2rem;
+    }
+    .opt-english {
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    /* Option States */
+    .option-btn.correct {
+      background: rgba(16, 185, 129, 0.2) !important;
+      border-color: var(--success) !important;
+      box-shadow: 0 0 16px var(--success-glow);
+    }
+    .option-btn.correct .opt-letter {
+      background: var(--success);
+      color: #fff;
+    }
+    .option-btn.wrong {
+      background: rgba(239, 68, 68, 0.2) !important;
+      border-color: var(--danger) !important;
+      box-shadow: 0 0 16px var(--danger-glow);
+    }
+    .option-btn.wrong .opt-letter {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    /* Explanation Banner */
+    .explanation-card {
+      display: none;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 0.9rem;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      animation: fadeIn 0.25s ease-out;
+    }
+    .explanation-card.show {
+      display: block;
+    }
+
+    /* Result View */
+    .result-score-circle {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      margin: 1.5rem auto;
+      background: conic-gradient(var(--primary) calc(var(--score-pct, 0) * 1%), rgba(255,255,255,0.06) 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .result-score-circle::after {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      background: #0f172a;
+      border-radius: 50%;
+    }
+    .result-score-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .result-score-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #fff;
+    }
+    .result-grade-badge {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 2rem;
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-top: 0.5rem;
+    }
+    .grade-A { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
+    .grade-B { background: rgba(6, 182, 212, 0.2); color: #38bdf8; border: 1px solid #06b6d4; }
+    .grade-C { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; border: 1px solid #6366f1; }
+    .grade-S { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
+    .grade-F { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
+
+    /* Admin View */
+    .admin-badge {
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--bg-card-border);
+      border-radius: 0.9rem;
+      background: rgba(15, 23, 42, 0.6);
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    .admin-table th {
+      background: rgba(30, 41, 59, 0.9);
+      padding: 0.9rem 1rem;
+      font-weight: 700;
+      color: #94a3b8;
+      border-bottom: 1px solid var(--bg-card-border);
+      white-space: nowrap;
+    }
+    .admin-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      white-space: nowrap;
+    }
+    .admin-table tr:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .wa-chat-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: #4ade80;
+      font-weight: 600;
+      text-decoration: none;
+      background: rgba(37, 211, 102, 0.1);
+      padding: 0.3rem 0.65rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(37, 211, 102, 0.25);
+      transition: all 0.2s;
+    }
+    .wa-chat-link:hover {
+      background: rgba(37, 211, 102, 0.25);
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+    .modal-backdrop.show {
+      display: flex;
+    }
+    .modal-content {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 1.25rem;
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.75rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      animation: modalPop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes modalPop {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .toast {
+      background: #1e293b;
+      color: #fff;
+      padding: 0.85rem 1.25rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      animation: toastIn 0.3s ease forwards;
+    }
+    @keyframes toastIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--bg-card-border);
+      background: rgba(9, 13, 22, 0.95);
+      padding: 2rem 0;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    /* Utility */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.2); }
+    .badge-green { background: rgba(74, 222, 128, 0.15); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.2); }
+
+    /* Dedicated Microsoft Excel Live Spreadsheet Component */
+    .excel-window {
+      background: #111827;
+      border: 1px solid #107c41;
+      border-radius: 0.9rem;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(16, 124, 65, 0.25);
+      margin-bottom: 2rem;
+    }
+    .excel-titlebar {
+      background: #107c41;
+      color: white;
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .excel-toolbar {
+      background: #1e293b;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .excel-formula-bar {
+      background: #0f172a;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.4rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.825rem;
+      color: #94a3b8;
+    }
+    .excel-formula-name {
+      background: #1e293b;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 0.3rem;
+      font-weight: 700;
+      color: #38bdf8;
+      font-size: 0.75rem;
+    }
+    .excel-formula-input {
+      flex: 1;
+      color: #f1f5f9;
+      font-size: 0.825rem;
+    }
+    .excel-grid-container {
+      overflow-x: auto;
+      max-height: 440px;
+      background: #0b1120;
+    }
+    .excel-grid {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      text-align: left;
+    }
+    .excel-grid th {
+      background: #1e293b;
+      border: 1px solid #334155;
+      padding: 0.5rem 0.85rem;
+      color: #cbd5e1;
+      font-weight: 700;
+      font-size: 0.8rem;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .excel-grid td {
+      border: 1px solid #1e293b;
+      padding: 0.55rem 0.85rem;
+      color: #f8fafc;
+      white-space: nowrap;
+      font-size: 0.875rem;
+    }
+    .excel-grid tr:hover td {
+      background: rgba(16, 124, 65, 0.12);
+    }
+    .excel-grid .row-idx {
+      background: #1e293b;
+      color: #64748b;
+      font-weight: 700;
+      text-align: center;
+      width: 48px;
+      user-select: none;
+      border-right: 2px solid #334155;
+    }
+    .excel-tab-bar {
+      background: #0f172a;
+      border-top: 1px solid #334155;
+      padding: 0.35rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+    }
+    .excel-tab-btn {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid #334155;
+      padding: 0.35rem 0.9rem;
+      border-radius: 0.4rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+    }
+    .excel-tab-btn.active {
+      background: #107c41;
+      color: #fff;
+      border-color: #107c41;
+      box-shadow: 0 2px 8px rgba(16, 124, 65, 0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container { padding: 0 1rem; }
+      .glass-card { padding: 1.25rem; }
+      .q-text-sinhala { font-size: 1.1rem; }
+      .q-text-english { font-size: 0.9rem; }
+      .option-btn { padding: 0.85rem 1rem; }
+      .floating-wa-btn { bottom: 1.25rem; right: 1.25rem; width: 50px; height: 50px; }
+      .hero-banner { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top WhatsApp Channel Banner -->
+  <div class="channel-announcement">
+    <span>📢 <strong>A/L ICT & GIT විභාග ජයග්‍රහණයට</strong> අපගේ නිල WhatsApp Channel එකට අදම එක්වන්න:</span>
+    <a href="https://whatsapp.com/channel/0029Vb3rPYPJJhzWpXIfsf2p" target="_blank" rel="noopener noreferrer">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.983.541 1.764.82 2.796.82 3.18 0 5.767-2.586 5.767-5.766.001-3.182-2.585-5.766-5.767-5.766zm-7.031 5.766c.001-3.878 3.153-7.03 7.031-7.03 3.879 0 7.031 3.152 7.031 7.03 0 3.879-3.152 7.031-7.031 7.031-1.196 0-2.342-.316-3.342-.871l-4.689 1.231 1.254-4.577c-.675-1.077-1.254-2.27-1.254-3.814z"/></svg>
+      Join Official WhatsApp Channel ➔
+    </a>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-logo" onclick="navigateToDashboard(); return false;">
+        <div class="logo-badge">GIT</div>
+        <div class="logo-text">
+          <h1>Sri Lanka ICT / GIT Quiz Portal</h1>
+          <div class="creator-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            Created by G.H. Hirusha thathsidu
+          </div>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <!-- Sound Toggle -->
+        <button id="soundToggleBtn" class="btn btn-secondary btn-sm" onclick="toggleAudio()" title="Sound On/Off">
+          <span id="soundIcon">🔊</span>
+        </button>
+
+        <!-- User info / Nav Actions -->
+        <div id="navUserArea">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="container" style="flex: 1;">
+
+    <!-- ========================================== -->
+    <!-- VIEW 1: AUTHENTICATION (LOGIN / REGISTER)  -->
+    <!-- ========================================== -->
+    <section id="authView" class="view-section active">
+      <div class="auth-wrapper">
+        <div class="glass-card">
+          <div class="auth-tabs">
+            <button class="auth-tab-btn active" id="tabRegisterBtn" onclick="switchAuthTab('register')">
+              Register / ලියාපදිංචිය
+            </button>
+            <button class="auth-tab-btn" id="tabLoginBtn" onclick="switchAuthTab('login')">
+              Login / පිවිසෙන්න
+            </button>
+          </div>
+
+          <!-- REGISTER FORM -->
+          <form id="registerForm" onsubmit="handleRegister(event)">
+            <h2 style="font-size: 1.35rem; margin-bottom: 0.25rem;">ශිෂ්‍ය ලියාපදිංචිය</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Create your student account to take the 50-question quiz.</p>
+
+            <div class="form-group">
+              <label class="form-label">Full Name <span class="si">(සම්පූර්ණ නම)</span> *</label>
+              <input type="text" id="regName" class="form-input" placeholder="e.g. Kasun Perera" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address <span class="si">(විද්‍යුත් තැපෑල)</span> *</label>
+              <input type="email" id="regEmail" class="form-input" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Password <span class="si">(මුරපදය)</span> *</label>
+              <input type="password" id="regPassword" class="form-input" placeholder="Minimum 6 characters" minlength="6" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">WhatsApp Number <span class="si">(වට්ස්ඇප් අංකය)</span> *</label>
+              <input type="tel" id="regWhatsapp" class="form-input" placeholder="07XXXXXXXX or +947XXXXXXXX" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">City / District <span class="si">(නගරය / දිස්ත්‍රික්කය)</span> *</label>
+              <select id="regCity" class="form-select" required>
+                <option value="" disabled selected>නගරය තෝරන්න / Select City</option>
+                <option value="Colombo">Colombo (කොළඹ)</option>
+                <option value="Gampaha">Gampaha (ගම්පහ)</option>
+                <option value="Kalutara">Kalutara (කළුතර)</option>
+                <option value="Kandy">Kandy (මහනුවර)</option>
+                <option value="Matale">Matale (මාතලේ)</option>
+                <option value="Nuwara Eliya">Nuwara Eliya (නුවරඑළිය)</option>
+                <option value="Galle">Galle (ගාල්ල)</option>
+                <option value="Matara">Matara (මාතර)</option>
+                <option value="Hambantota">Hambantota (හම්බන්තොට)</option>
+                <option value="Jaffna">Jaffna (යාපනය)</option>
+                <option value="Kilinochchi">Kilinochchi (කිලිනොච්චිය)</option>
+                <option value="Mannar">Mannar (මන්නාරම)</option>
+                <option value="Vavuniya">Vavuniya (වවුනියාව)</option>
+                <option value="Mullaitivu">Mullaitivu (මුලතිව්)</option>
+                <option value="Batticaloa">Batticaloa (මඩකලපුව)</option>
+                <option value="Ampara">Ampara (අම්පාර)</option>
+                <option value="Trincomalee">Trincomalee (ත්‍රිකුණාමලය)</option>
+                <option value="Kurunegala">Kurunegala (කුරුණෑගල)</option>
+                <option value="Puttalam">Puttalam (පුත්තලම)</option>
+                <option value="Anuradhapura">Anuradhapura (අනුරාධපුරය)</option>
+                <option value="Polonnaruwa">Polonnaruwa (පොළොන්නරුව)</option>
+                <option value="Badulla">Badulla (බදුල්ල)</option>
+                <option value="Monaragala">Monaragala (මොණරාගල)</option>
+                <option value="Ratnapura">Ratnapura (රත්නපුර)</option>
+                <option value="Kegalle">Kegalle (කෑගල්ල)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              ලියාපදිංචි වී පිවිසෙන්න / Register & Login
+            </button>
+          </form>
+
+          <!-- LOGIN FORM -->
+          <form id="loginForm" onsubmit="handleLogin(event)" style="display: none;">
+            <h2 style="font-size: 1.35rem; margin-bottom: 0.25rem;">ගිණුමට පිවිසෙන්න</h2>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Enter your email & password (Students or Admin).</p>
+
+            <div class="form-group">
+              <label class="form-label">Email Address <span class="si">(විද්‍යුත් තැපෑල)</span></label>
+              <input type="email" id="loginEmail" class="form-input" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Password <span class="si">(මුරපදය)</span></label>
+              <input type="password" id="loginPassword" class="form-input" placeholder="Enter password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+              පිවිසෙන්න / Log In
+            </button>
+
+            <!-- Quick Demo Credentials Box -->
+            <div class="auth-demo-box">
+              <div style="font-weight: 700; color: #e2e8f0; margin-bottom: 0.35rem; display: flex; align-items: center; justify-content: space-between;">
+                <span>⚡ Admin Login Credentials</span>
+                <button type="button" class="btn btn-secondary btn-sm" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" onclick="fillAdminDemo()">Auto-Fill Admin</button>
+              </div>
+              <div>Email: <strong style="color: #38bdf8;">thathsiduhirusha@gmail.com</strong></div>
+              <div>Password: <strong style="color: #38bdf8;">760882950</strong></div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 2: STUDENT DASHBOARD                  -->
+    <!-- ========================================== -->
+    <section id="dashboardView" class="view-section">
+      <!-- Welcome Hero -->
+      <div class="hero-banner">
+        <div>
+          <div class="badge badge-blue" style="margin-bottom: 0.6rem;">General Information Technology & A/L ICT Examination</div>
+          <h2 id="dashWelcomeName" style="font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em;">Welcome, Student!</h2>
+          <p style="color: #cbd5e1; font-size: 0.95rem; max-width: 650px; margin-top: 0.5rem;">
+            ශ්‍රී ලංකා උසස් පෙළ ICT සහ GIT විභාගය ඉලක්ක කරගත් ප්‍රශ්න 50 කින් යුත් ස්වයංක්‍රීය බහුවරණ ප්‍රශ්නාවලියට මුහුණ දී ඔබේ දැනුම පරීක්ෂා කරගන්න.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="startQuizSession()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            ප්‍රශ්න 50 විභාගය ආරම්භ කරන්න (Start 50-Q Quiz)
+          </button>
+          <a href="https://whatsapp.com/channel/0029Vb3rPYPJJhzWpXIfsf2p" target="_blank" class="btn btn-whatsapp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.983.541 1.764.82 2.796.82 3.18 0 5.767-2.586 5.767-5.766zm-7.031 5.766c.001-3.878 3.153-7.03 7.031-7.03 3.879 0 7.031 3.152 7.031 7.03 0 3.879-3.152 7.031-7.031 7.031-1.196 0-2.342-.316-3.342-.871l-4.689 1.231 1.254-4.577c-.675-1.077-1.254-2.27-1.254-3.814z"/></svg>
+            Join WhatsApp Channel
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(99, 102, 241, 0.15); color: #818cf8;">🏆</div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Best Score / උපරිම ලකුණු</div>
+            <div id="statBestScore" style="font-size: 1.5rem; font-weight: 800;">- / 50</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(6, 182, 212, 0.15); color: #22d3ee;">📝</div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Quiz Attempts / වාර ගණන</div>
+            <div id="statAttempts" style="font-size: 1.5rem; font-weight: 800;">0</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">⏱️</div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Time Per Question</div>
+            <div style="font-size: 1.5rem; font-weight: 800;">20s</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">🌐</div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Medium / මාධ්‍යය</div>
+            <div style="font-size: 1.35rem; font-weight: 800;">සිංහල & English</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exam Syllabus / Topic Coverage Info -->
+      <div class="glass-card">
+        <h3 style="font-size: 1.15rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+          <span>📚 විභාග විෂය නිර්දේශ අන්තර්ගතය (Quiz Syllabus Coverage)</span>
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; font-size: 0.9rem;">
+          <div style="background: rgba(15, 23, 42, 0.5); padding: 0.85rem; border-radius: 0.75rem; border: 1px solid var(--bg-card-border);">
+            <strong style="color: #38bdf8;">1. Number Systems (ද්වීමය හා සංඛ්‍යා පද්ධති)</strong>
+            <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">Binary to Dec, Hex, Octal, 2's Complement, Binary Addition, Storage Units (GB, MB, KB).</p>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.5); padding: 0.85rem; border-radius: 0.75rem; border: 1px solid var(--bg-card-border);">
+            <strong style="color: #38bdf8;">2. Spreadsheets (පැතුරුම්පත් සූත්‍ර)</strong>
+            <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">SUM, AVERAGE, MAX, MIN, COUNT, IF conditions, Cell references ($A$1).</p>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.5); padding: 0.85rem; border-radius: 0.75rem; border: 1px solid var(--bg-card-border);">
+            <strong style="color: #38bdf8;">3. Logic Gates (තාර්කික ද්වාර)</strong>
+            <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">AND, OR, NOT, NAND, NOR, XOR truth tables and Boolean expressions.</p>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.5); padding: 0.85rem; border-radius: 0.75rem; border: 1px solid var(--bg-card-border);">
+            <strong style="color: #38bdf8;">4. HTML & Web (වෙබ් නිර්මාණය)</strong>
+            <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">HTML tags, attributes, tables, forms, CSS properties and hex color codes.</p>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.5); padding: 0.85rem; border-radius: 0.75rem; border: 1px solid var(--bg-card-border);">
+            <strong style="color: #38bdf8;">5. Pseudocode & Algorithms (පාලන ව්‍යුහ)</strong>
+            <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">While loops, For loops, If-Else conditions, Modulo calculations, Trace tables.</p>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.5); padding: 0.85rem; border-radius: 0.75rem; border: 1px solid var(--bg-card-border);">
+            <strong style="color: #38bdf8;">6. SQL & Database (දත්ත සමුදාය)</strong>
+            <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.25rem;">SELECT, WHERE, ORDER BY, Primary Keys, Foreign Keys, aggregate functions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 3: LIVE 50-QUESTION QUIZ INTERFACE    -->
+    <!-- ========================================== -->
+    <section id="quizView" class="view-section">
+      <!-- Quiz Navigation & Header -->
+      <div class="quiz-header">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span id="quizCounterText" style="font-weight: 800; font-size: 1.1rem; color: #fff;">
+              Question 1 of 50
+            </span>
+            <span id="quizSinhalaCounter" style="color: var(--text-muted); font-size: 0.85rem;">
+              (ප්‍රශ්නය 01 / 50)
+            </span>
+          </div>
+          <div class="quiz-progress-bar-wrap">
+            <div id="quizProgressBar" class="quiz-progress-bar"></div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <!-- Score tally live -->
+          <div style="font-size: 0.9rem; font-weight: 600; color: #94a3b8;">
+            Score: <span id="liveScoreVal" style="color: #38bdf8; font-weight: 800;">0</span> / <span id="answeredCount">0</span>
+          </div>
+
+          <!-- 20-Sec Timer -->
+          <div class="timer-ring-box" id="timerBox">
+            <div class="timer-badge" id="timerBadge">
+              <span class="timer-val" id="timerSeconds">20</span>
+            </div>
+            <span style="font-size: 0.85rem; color: #cbd5e1;">Seconds</span>
+          </div>
+
+          <!-- Quit Quiz Button -->
+          <button class="btn btn-secondary btn-sm" onclick="confirmQuitQuiz()">Exit</button>
+        </div>
+      </div>
+
+      <!-- Question Box -->
+      <div class="glass-card question-box">
+        <div class="q-meta">
+          <span id="qCategoryBadge" class="q-category-tag">Topic / මාතෘකාව</span>
+          <span id="qDifficultyBadge" style="font-size: 0.75rem; color: var(--text-muted);">GIT / A/L ICT</span>
+        </div>
+
+        <!-- Bilingual Question Text -->
+        <div id="qSinhalaText" class="q-text-sinhala">ප්‍රශ්නය මෙතන දිස්වේ...</div>
+        <div id="qEnglishText" class="q-text-english">Question in English will appear here...</div>
+
+        <!-- Code Snippet / Table Display (if applicable) -->
+        <div id="qCodeSnippetBox" class="code-snippet-box" style="display: none;"></div>
+        <div id="qTableSnippetBox" style="display: none; overflow-x: auto;"></div>
+
+        <!-- Options Grid -->
+        <div id="optionsGrid" class="options-grid">
+          <!-- 4 Multiple Choice Options inserted here -->
+        </div>
+
+        <!-- Explanation Card (Appears on click) -->
+        <div id="explanationCard" class="explanation-card">
+          <div style="font-weight: 700; color: #38bdf8; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
+            <span>💡 පැහැදිලි කිරීම (Explanation):</span>
+          </div>
+          <div id="expSinhala" style="color: #e2e8f0; font-size: 0.95rem; margin-bottom: 0.25rem;"></div>
+          <div id="expEnglish" style="color: #94a3b8; font-size: 0.85rem;"></div>
+        </div>
+
+        <!-- Next Button -->
+        <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+          <button id="nextQuestionBtn" class="btn btn-primary" onclick="goToNextQuestion()" style="display: none;">
+            ඊළඟ ප්‍රශ්නය / Next Question ➔
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 4: QUIZ RESULTS SCREEN                -->
+    <!-- ========================================== -->
+    <section id="resultsView" class="view-section">
+      <div class="glass-card" style="text-align: center; max-width: 780px; margin: 0 auto;">
+        <div class="badge badge-green" style="margin-bottom: 0.75rem;">Quiz Completed / විභාගය අවසන් විය</div>
+        <h2 style="font-size: 2rem; font-weight: 800;">විභාග ප්‍රතිඵල ලේඛනය</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">GIT & A/L ICT Examination Summary</p>
+
+        <!-- Circular Score Display -->
+        <div id="resultScoreCircle" class="result-score-circle">
+          <div class="result-score-content">
+            <div id="resFinalScore" class="result-score-num">0 / 50</div>
+            <div id="resPercentage" style="font-size: 0.95rem; color: #38bdf8; font-weight: 700;">0%</div>
+          </div>
+        </div>
+
+        <div id="resGradeBadge" class="result-grade-badge grade-A">Grade: A (Distinction)</div>
+
+        <p id="resFeedbackMsg" style="margin: 1.25rem 0; color: #e2e8f0; font-size: 1.05rem; font-weight: 500;">
+          විශිෂ්ට සාමාර්ථයක්! ඔබට උසස් පෙළ ICT විභාගයට ඉහළ සූදානමක් ඇත.
+        </p>
+
+        <!-- WhatsApp Share Button -->
+        <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.75rem;">
+          <button class="btn btn-whatsapp" onclick="shareScoreToWhatsapp()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.983.541 1.764.82 2.796.82 3.18 0 5.767-2.586 5.767-5.766zm-7.031 5.766c.001-3.878 3.153-7.03 7.031-7.03 3.879 0 7.031 3.152 7.031 7.03 0 3.879-3.152 7.031-7.031 7.031-1.196 0-2.342-.316-3.342-.871l-4.689 1.231 1.254-4.577c-.675-1.077-1.254-2.27-1.254-3.814z"/></svg>
+            ලකුණු WhatsApp මගින් යවන්න (Share Score)
+          </button>
+          <a href="https://whatsapp.com/channel/0029Vb3rPYPJJhzWpXIfsf2p" target="_blank" class="btn btn-secondary">
+            📢 Join WhatsApp Channel
+          </a>
+          <button class="btn btn-primary" onclick="startQuizSession()">
+            🔄 නව ප්‍රශ්න 50 ක් නැවත කරන්න (Retake Quiz)
+          </button>
+        </div>
+
+        <!-- Topic Breakdown Accordion -->
+        <div style="text-align: left; background: rgba(15, 23, 42, 0.6); padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--bg-card-border); margin-bottom: 1.5rem;">
+          <h4 style="margin-bottom: 0.75rem; color: #38bdf8;">📊 විෂය කොටස් අනුව ඔබේ ලකුණු (Topic Breakdown)</h4>
+          <div id="topicBreakdownContainer" style="display: flex; flex-direction: column; gap: 0.65rem;">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Review Answers Button -->
+        <button class="btn btn-secondary" onclick="toggleReviewModal()" style="width: 100%;">
+          🔍 ප්‍රශ්න 50 සහ නිවැරදි පිළිතුරු සමාලෝචනය (Review All 50 Questions)
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 5: ADMIN DASHBOARD (PROTECTED)        -->
+    <!-- ========================================== -->
+    <section id="adminView" class="view-section">
+      <!-- Admin Header -->
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+            <span class="admin-badge">ADMIN CONTROL PANEL</span>
+            <span style="font-size: 0.85rem; color: #4ade80;">● Authorized Access</span>
+          </div>
+          <h2 style="font-size: 1.8rem; font-weight: 800;">පරිපාලක පාලක පුවරුව (Admin Portal)</h2>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">Manage registered students, view WhatsApp contacts, export data to Excel, and sync with Vercel API.</p>
+        </div>
+
+        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+          <button class="btn btn-whatsapp btn-sm" onclick="exportStudentsToExcel()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Excel එකට Export කරන්න (.CSV / XLSX)
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="openVercelConfigModal()">
+            ⚙️ Vercel Sync Setup
+          </button>
+          <button class="btn btn-danger btn-sm" onclick="confirmClearAllStudents()">
+            🗑️ Clear Student Data
+          </button>
+        </div>
+      </div>
+
+      <!-- Admin Metrics -->
+      <div class="stats-grid" style="margin-bottom: 1.5rem;">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(99, 102, 241, 0.15); color: #818cf8;">👥</div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Registered Students</div>
+            <div id="adminStatTotalUsers" style="font-size: 1.5rem; font-weight: 800;">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">📝</div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Quizzes Completed</div>
+            <div id="adminStatTotalQuizzes" style="font-size: 1.5rem; font-weight: 800;">0</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(6, 182, 212, 0.15); color: #22d3ee;">📈</div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Average Score</div>
+            <div id="adminStatAvgScore" style="font-size: 1.5rem; font-weight: 800;">0%</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">⚡</div>
+          <div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Vercel Sync Status</div>
+            <div id="adminStatSyncBadge" style="font-size: 0.95rem; font-weight: 700; color: #38bdf8;">Configured</div>
+          </div>
+        </div>
+      <!-- DEDICATED REAL-TIME MICROSOFT EXCEL SPREADSHEET (ADMIN ONLY) -->
+      <div class="excel-window" id="excelSpreadsheetViewer">
+        <!-- Excel Signature Green Titlebar -->
+        <div class="excel-titlebar">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M21.17 3.25Q21.5 3.25 21.76 3.5 22 3.74 22 4.08V19.92Q22 20.26 21.76 20.5 21.5 20.75 21.17 20.75H7.83Q7.5 20.75 7.24 20.5 7 20.26 7 19.92V17H2.83Q2.5 17 2.24 16.76 2 16.5 2 16.17V7.83Q2 7.5 2.24 7.24 2.5 7 2.83 7H7V4.08Q7 3.74 7.24 3.5 7.5 3.25 7.83 3.25M7 15V9H3.5V15M9.5 5.5V18.5H20.5V5.5M12.75 14.5L14 12L12.75 9.5H14.5L15.25 11.25L16 9.5H17.75L16.5 12L17.75 14.5H16L15.25 12.75L14.5 14.5Z"/>
+            </svg>
+            <span>Microsoft Excel Online - ළමයින්ගේ නම් සහ WhatsApp අංක සජීවී Excel ලේඛනය (Students_Contacts.xlsx)</span>
+          </div>
+          <span style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.65rem; border-radius: 0.4rem; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.15);">
+            🟢 Real-Time Auto Sync (Admin Only)
+          </span>
+        </div>
+
+        <!-- Excel Toolbar -->
+        <div class="excel-toolbar">
+          <button class="btn btn-whatsapp btn-sm" onclick="exportStudentsToExcel()">
+            📥 Download Real Excel (.csv / .xlsx)
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="copyExcelTableToClipboard()">
+            📋 Copy All for Excel (Paste into Google Sheets)
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="copyAllWhatsappNumbers()">
+            💬 Copy All WhatsApp Numbers
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="populateDemoStudents()">
+            ⚡ Add Demo Student
+          </button>
+          <span style="margin-left: auto; font-size: 0.8rem; color: #4ade80;">
+            ● ළමයෙක් Register වූ සැනින් මෙම Excel එකට auto-update වේ
+          </span>
+        </div>
+
+        <!-- Excel Formula Bar -->
+        <div class="excel-formula-bar">
+          <div class="excel-formula-name">A1:F50</div>
+          <span style="color: #38bdf8; font-weight: 700;">fx</span>
+          <div class="excel-formula-input" id="excelFormulaInputText">
+            =FILTER(Students_Contacts, Status="Active", Columns=[Name, WhatsApp, City, Marks, Joined])
+          </div>
+        </div>
+
+        <!-- Excel Grid Container -->
+        <div class="excel-grid-container">
+          <table class="excel-grid" id="excelLiveGrid">
+            <thead>
+              <tr>
+                <th class="row-idx">#</th>
+                <th>A (ශිෂ්‍යයාගේ නම - Student Name)</th>
+                <th>B (WhatsApp අංකය - WhatsApp Number)</th>
+                <th>C (WhatsApp සෘජු සබඳතාව - 1-Click Chat)</th>
+                <th>D (නගරය - City)</th>
+                <th>E (ලකුණු - Marks / 50)</th>
+                <th>F (ලියාපදිංචි වේලාව - Timestamp)</th>
+              </tr>
+            </thead>
+            <tbody id="excelLiveGridBody">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Excel Tab Bar -->
+        <div class="excel-tab-bar">
+          <button class="excel-tab-btn active" id="excelTab1Btn" onclick="switchExcelTab(1)">
+            📄 Sheet 1: ළමයින්ගේ විස්තර (Contacts & WhatsApp)
+          </button>
+          <button class="excel-tab-btn" id="excelTab2Btn" onclick="switchExcelTab(2)">
+            📊 Sheet 2: විභාග ලකුණු ලේඛනය (Marks & Grades)
+          </button>
+        </div>
+      </div>
+
+      <!-- Student List Table Card -->
+      <div class="glass-card" style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+          <h3 style="font-size: 1.15rem; font-weight: 700;">
+            ලියාපදිංචි සිසුන්ගේ නාමලේඛනය (Registered Students Registry)
+          </h3>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <input type="text" id="adminSearchInput" class="form-input" style="padding: 0.45rem 0.85rem; font-size: 0.85rem; width: 220px;" placeholder="සොයන්න (Search name/city)..." oninput="filterAdminStudents()">
+            <button class="btn btn-secondary btn-sm" onclick="populateDemoStudents()">+ Add Test Data</button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>ශිෂ්‍යයාගේ නම (Name)</th>
+                <th>වට්ස්ඇප් අංකය (WhatsApp - Admin Only)</th>
+                <th>විද්‍යුත් තැපෑල (Email)</th>
+                <th>නගරය (City)</th>
+                <th>උපරිම ලකුණු (Best Score)</th>
+                <th>වාර ගණන (Attempts)</th>
+                <th>ලියාපදිංචි දිනය (Joined)</th>
+                <th>ක්‍රියාමාර්ග (Action)</th>
+              </tr>
+            </thead>
+            <tbody id="adminStudentTableBody">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Google Sheet & Vercel Live Cloud Sync Panel (Admin Exclusive) -->
+      <div class="glass-card" id="googleSheetSyncSection">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <span style="font-size: 1.5rem;">📊</span>
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: #38bdf8;">
+                Google Excel Sheet & Vercel Real-Time Auto-Sync
+              </h3>
+              <div style="font-size: 0.8rem; color: #4ade80;">
+                ● සිසුන් ලියාපදිංචි වූ සැනින් සහ විභාගය අවසන් වූ සැනින් නම, WhatsApp අංකය සහ ලකුණු Google Sheet එකට Auto Update වේ.
+              </div>
+            </div>
+          </div>
+          <span class="badge badge-blue">Admin Only Access</span>
+        </div>
+
+        <!-- 3-Step Setup Assistant -->
+        <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 0.9rem; padding: 1.25rem; margin-bottom: 1.25rem;">
+          <div style="font-weight: 700; color: #f8fafc; margin-bottom: 0.75rem; font-size: 0.95rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+            <span>⚡ විනාඩි 1න් Google Sheet එකක් Connect කරගන්නා ආකාරය (Quick Setup Guide):</span>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="https://sheets.new" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="font-size: 0.78rem;">
+                🔗 1. Open sheets.new
+              </a>
+              <button class="btn btn-whatsapp btn-sm" onclick="copyGoogleAppsScript()" style="font-size: 0.78rem;">
+                📋 2. Copy Google Apps Script
+              </button>
+            </div>
+          </div>
+
+          <ol style="padding-left: 1.25rem; font-size: 0.85rem; color: #cbd5e1; line-height: 1.7;">
+            <li><strong><a href="https://sheets.new" target="_blank" style="color: #38bdf8;">sheets.new</a></strong> වෙත ගොස් නව Google Sheet එකක් සාදා ගන්න (නම: <em>A/L ICT Quiz Students</em>).</li>
+            <li>එහි ඉහළ මෙනුවේ <strong>Extensions (දිගු) ➔ Apps Script</strong> ක්ලික් කරන්න.</li>
+            <li>එහි ඇති සියලු කේත මකා ඉහත <strong>"Copy Google Apps Script"</strong> බොත්තම ඔබා ලබාගත් කේතය Paste කර Save (💾) කරන්න.</li>
+            <li><strong>Deploy ➔ New deployment</strong> ගොස්, වර්ගය <strong>Web app</strong> තෝරා, Who has access යන්නට <strong>"Anyone" (ඕනෑම අයෙකුට)</strong> ලබාදී Deploy කර ලැබෙන <strong>Web App URL</strong> එක පහත කොටුවට Paste කරන්න!</li>
+          </ol>
+        </div>
+
+        <!-- Webhook URL Configuration Form -->
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem;">
+          <input type="url" id="adminWebhookUrlInput" class="form-input" style="flex: 1; min-width: 300px;" placeholder="Google Apps Script Web App URL එක (https://script.google.com/macros/s/.../exec) මෙතැනට Paste කරන්න">
+          <button class="btn btn-primary" onclick="saveWebhookSettings()">
+            💾 Save Webhook URL
+          </button>
+          <button class="btn btn-whatsapp" onclick="testGoogleSheetSync()">
+            🧪 Test Google Sheet Sync
+          </button>
+        </div>
+
+        <div id="webhookTestStatus" style="font-size: 0.875rem; margin-bottom: 1rem; display: none; padding: 0.75rem; border-radius: 0.5rem; background: rgba(0,0,0,0.3);"></div>
+
+        <!-- Direct Excel File Download alternative -->
+        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(30, 41, 59, 0.4); padding: 0.85rem 1rem; border-radius: 0.75rem; border: 1px solid var(--bg-card-border); flex-wrap: wrap; gap: 0.75rem;">
+          <div style="font-size: 0.85rem; color: #cbd5e1;">
+            💡 ඔබට Google Sheet එකක් නැතිව වුවද දැනට ලියාපදිංචි සියලු සිසුන්ගේ විස්තර එක් ක්ලික් එකෙන් Excel (.csv) ලෙස Download කරගත හැක.
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="exportStudentsToExcel()">
+            📥 Download Excel File Now
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- MODAL 1: QUESTION REVIEW MODAL             -->
+  <!-- ========================================== -->
+  <div id="reviewModal" class="modal-backdrop">
+    <div class="modal-content" style="max-width: 850px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <h3 style="font-size: 1.25rem; font-weight: 700;">ප්‍රශ්න 50 සමාලෝචනය (Review All 50 Questions)</h3>
+        <button class="btn btn-secondary btn-sm" onclick="toggleReviewModal()">✕ Close</button>
+      </div>
+      <div id="reviewQuestionsList" style="display: flex; flex-direction: column; gap: 1rem;">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- FLOATING WHATSAPP SUPPORT BUTTON           -->
+  <!-- ========================================== -->
+  <a href="https://wa.me/94743909934?text=Hello%20Hirusha%20Thathsidu%2C%20I%20am%20using%20the%20GIT%20%2F%20A%2FL%20ICT%20Quiz%20Portal%20and%20would%20like%20to%20get%20more%20information." 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="floating-wa-btn" 
+     title="Chat with Developer (G.H. Hirusha thathsidu)">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.983.541 1.764.82 2.796.82 3.18 0 5.767-2.586 5.767-5.766zm-7.031 5.766c.001-3.878 3.153-7.03 7.031-7.03 3.879 0 7.031 3.152 7.031 7.03 0 3.879-3.152 7.031-7.031 7.031-1.196 0-2.342-.316-3.342-.871l-4.689 1.231 1.254-4.577c-.675-1.077-1.254-2.27-1.254-3.814z"/>
+    </svg>
+    <div class="floating-wa-tooltip">
+      WhatsApp: +94 74 390 9934 (Hirusha)
+    </div>
+  </a>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+        <span style="font-weight: 700; color: #fff;">A/L ICT & GIT Examination Preparation System</span>
+        <span>•</span>
+        <span style="color: #38bdf8; font-weight: 600;">Created by G.H. Hirusha thathsidu</span>
+      </div>
+
+      <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; font-size: 0.85rem;">
+        <a href="https://whatsapp.com/channel/0029Vb3rPYPJJhzWpXIfsf2p" target="_blank" style="color: #4ade80; text-decoration: none;">
+          📢 WhatsApp Channel
+        </a>
+        <a href="https://wa.me/94743909934" target="_blank" style="color: #4ade80; text-decoration: none;">
+          💬 WhatsApp: +94 74 390 9934
+        </a>
+        <a href="#" onclick="showAboutModal(); return false;" style="color: #94a3b8; text-decoration: none;">
+          About Portal
+        </a>
+      </div>
+
+      <div style="font-size: 0.75rem; color: #64748b;">
+        © 2026 G.H. Hirusha thathsidu. All Rights Reserved. Designed for Sri Lankan Advanced Level Students.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT APPLICATION CODE                -->
+  <!-- ========================================== -->
+  <script>
+    /* ==========================================================================
+       1. STATE & STORAGE MANAGEMENT
+       ========================================================================== */
+    const STORAGE_USERS_KEY = 'git_quiz_portal_users';
+    const STORAGE_CURRENT_USER_KEY = 'git_quiz_portal_current_user';
+    const STORAGE_WEBHOOK_KEY = 'git_quiz_portal_webhook_url';
+
+    const ADMIN_CREDENTIALS = {
+      email: 'thathsiduhirusha@gmail.com',
+      password: '760882950'
+    };
+
+    let currentUser = null;
+    let quizSession = {
+      questions: [],
+      currentIndex: 0,
+      userAnswers: [], // Array of { questionIndex, selectedOptionIndex, isCorrect, timeSpent }
+      score: 0,
+      timer: null,
+      timeLeft: 20,
+      isAnswered: false
+    };
+
+    let audioEnabled = true;
+    let audioCtx = null;
+
+    // Web Audio Synthesizer for high fidelity offline sound effects
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playSound(type) {
+      if (!audioEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        const now = ctx.currentTime;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        if (type === 'correct') {
+          // Cheerful chime (E5 -> G#5 -> B5)
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(659.25, now);
+          osc.frequency.setValueAtTime(830.61, now + 0.08);
+          osc.frequency.setValueAtTime(987.77, now + 0.16);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+          osc.start(now);
+          osc.stop(now + 0.45);
+        } else if (type === 'wrong') {
+          // Low buzz
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(150, now);
+          osc.frequency.setValueAtTime(120, now + 0.1);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+          osc.start(now);
+          osc.stop(now + 0.35);
+        } else if (type === 'tick') {
+          // Clock tick
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(800, now);
+          gain.gain.setValueAtTime(0.05, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+          osc.start(now);
+          osc.stop(now + 0.04);
+        } else if (type === 'complete') {
+          // Victory fanfare
+          const notes = [523.25, 659.25, 783.99, 1046.50];
+          notes.forEach((freq, i) => {
+            const o = ctx.createOscillator();
+            const g = ctx.createGain();
+            o.type = 'triangle';
+            o.frequency.setValueAtTime(freq, now + i * 0.1);
+            g.gain.setValueAtTime(0.15, now + i * 0.1);
+            g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + 0.35);
+            o.connect(g);
+            g.connect(ctx.destination);
+            o.start(now + i * 0.1);
+            o.stop(now + i * 0.1 + 0.35);
+          });
+        }
+      } catch (e) {
+        console.warn("Audio playback not permitted yet", e);
+      }
+    }
+
+    function toggleAudio() {
+      audioEnabled = !audioEnabled;
+      const icon = document.getElementById('soundIcon');
+      if (icon) {
+        icon.textContent = audioEnabled ? '🔊' : '🔇';
+      }
+      showToast(audioEnabled ? 'Sound Enabled' : 'Sound Muted');
+    }
+
+    // Local Storage Helpers
+    function getStoredUsers() {
+      try {
+        const data = localStorage.getItem(STORAGE_USERS_KEY);
+        return data ? JSON.parse(data) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveStoredUsers(users) {
+      try {
+        localStorage.setItem(STORAGE_USERS_KEY, JSON.stringify(users));
+      } catch (e) {
+        console.error("Storage error", e);
+      }
+    }
+
+    function getStoredCurrentUser() {
+      try {
+        const data = localStorage.getItem(STORAGE_CURRENT_USER_KEY);
+        return data ? JSON.parse(data) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function setStoredCurrentUser(user) {
+      currentUser = user;
+      if (user) {
+        localStorage.setItem(STORAGE_CURRENT_USER_KEY, JSON.stringify(user));
+      } else {
+        localStorage.removeItem(STORAGE_CURRENT_USER_KEY);
+      }
+      renderNavUserArea();
+    }
+
+    /* ==========================================================================
+       2. NOTIFICATIONS & TOASTS
+       ========================================================================== */
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      let icon = 'ℹ️';
+      if (type === 'success') icon = '✅';
+      if (type === 'error') icon = '⚠️';
+      toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    /* ==========================================================================
+       3. NAVIGATION & VIEW SWITCHING
+       ========================================================================== */
+    function switchView(viewId) {
+      document.querySelectorAll('.view-section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      const target = document.getElementById(viewId);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function navigateToDashboard() {
+      if (!currentUser) {
+        switchView('authView');
+        return;
+      }
+      if (currentUser.isAdmin) {
+        switchView('adminView');
+        renderAdminDashboard();
+      } else {
+        switchView('dashboardView');
+        renderStudentDashboard();
+      }
+    }
+
+    function switchAuthTab(tab) {
+      const regBtn = document.getElementById('tabRegisterBtn');
+      const logBtn = document.getElementById('tabLoginBtn');
+      const regForm = document.getElementById('registerForm');
+      const logForm = document.getElementById('loginForm');
+
+      if (tab === 'register') {
+        regBtn.classList.add('active');
+        logBtn.classList.remove('active');
+        regForm.style.display = 'block';
+        logForm.style.display = 'none';
+      } else {
+        logBtn.classList.add('active');
+        regBtn.classList.remove('active');
+        logForm.style.display = 'block';
+        regForm.style.display = 'none';
+      }
+    }
+
+    function fillAdminDemo() {
+      document.getElementById('loginEmail').value = ADMIN_CREDENTIALS.email;
+      document.getElementById('loginPassword').value = ADMIN_CREDENTIALS.password;
+      showToast('Admin credentials filled!', 'success');
+    }
+
+    /* ==========================================================================
+       4. AUTHENTICATION LOGIC (USER REGISTRATION & LOGIN)
+       ========================================================================== */
+    function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim().toLowerCase();
+      const password = document.getElementById('regPassword').value;
+      let whatsapp = document.getElementById('regWhatsapp').value.trim();
+      const city = document.getElementById('regCity').value;
+
+      if (!name || !email || !password || !whatsapp || !city) {
+        showToast('කරුණාකර සියලු විස්තර සම්පූර්ණ කරන්න (Fill all fields)', 'error');
+        return;
+      }
+
+      // Format WhatsApp number
+      whatsapp = formatWhatsappNumber(whatsapp);
+
+      const users = getStoredUsers();
+      const existingUser = users.find(u => u.email.toLowerCase() === email);
+
+      if (existingUser) {
+        showToast('මෙම Email ලිපිනය දැනටමත් ලියාපදිංචි කර ඇත (Email already exists)', 'error');
+        return;
+      }
+
+      const newUser = {
+        id: 'usr_' + Date.now() + '_' + Math.floor(Math.random()*1000),
+        name,
+        email,
+        password,
+        whatsapp,
+        city,
+        score: null,
+        bestScore: 0,
+        attempts: 0,
+        registeredAt: new Date().toISOString(),
+        lastActive: new Date().toISOString()
+      };
+
+      users.push(newUser);
+      saveStoredUsers(users);
+
+      // Async sync to Vercel/Google Sheets if configured
+      triggerCloudSync(newUser, 'registration');
+
+      setStoredCurrentUser(newUser);
+      showToast(`සාදරයෙන් පිළිගනිමු ${name}! (Registered successfully)`, 'success');
+      navigateToDashboard();
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const password = document.getElementById('loginPassword').value;
+
+      // 1. Check if Admin credentials
+      if (email === ADMIN_CREDENTIALS.email.toLowerCase() && password === ADMIN_CREDENTIALS.password) {
+        const adminUser = {
+          name: 'G.H. Hirusha thathsidu',
+          email: ADMIN_CREDENTIALS.email,
+          isAdmin: true,
+          whatsapp: '+94743909934',
+          city: 'Administrator'
+        };
+        setStoredCurrentUser(adminUser);
+        showToast('පරිපාලක ලෙස සාර්ථකව පිවිසුණි! (Admin Logged In)', 'success');
+        switchView('adminView');
+        renderAdminDashboard();
+        return;
+      }
+
+      // 2. Check student credentials
+      const users = getStoredUsers();
+      const user = users.find(u => u.email.toLowerCase() === email && u.password === password);
+
+      if (!user) {
+        showToast('විද්‍යුත් තැපෑල හෝ මුරපදය වැරදියි (Invalid Email or Password)', 'error');
+        return;
+      }
+
+      user.lastActive = new Date().toISOString();
+      saveStoredUsers(users);
+
+      setStoredCurrentUser(user);
+      showToast(`නැවත සාදරයෙන් පිළිගනිමු, ${user.name}!`, 'success');
+      navigateToDashboard();
+    }
+
+    function handleLogout() {
+      setStoredCurrentUser(null);
+      showToast('සාර්ථකව ඉවත් විය (Logged Out)', 'info');
+      switchView('authView');
+      switchAuthTab('login');
+    }
+
+    function formatWhatsappNumber(num) {
+      let cleaned = num.replace(/\D/g, '');
+      if (cleaned.startsWith('0')) {
+        cleaned = '94' + cleaned.substring(1);
+      } else if (!cleaned.startsWith('94')) {
+        cleaned = '94' + cleaned;
+      }
+      return '+' + cleaned;
+    }
+
+    function renderNavUserArea() {
+      const container = document.getElementById('navUserArea');
+      if (!container) return;
+
+      if (!currentUser) {
+        container.innerHTML = `
+          <button class="btn btn-primary btn-sm" onclick="switchView('authView'); switchAuthTab('login');">
+            Login / Register
+          </button>
+        `;
+      } else {
+        const roleLabel = currentUser.isAdmin 
+          ? `<span class="admin-badge" style="cursor: pointer;" onclick="switchView('adminView'); renderAdminDashboard();">ADMIN</span>`
+          : `<span style="font-size: 0.85rem; font-weight: 600; color: #cbd5e1;">${escapeHtml(currentUser.name)}</span>`;
+
+        container.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 0.6rem;">
+            ${roleLabel}
+            <button class="btn btn-secondary btn-sm" onclick="handleLogout()" title="Logout">
+              Logout
+            </button>
+          </div>
+        `;
+      }
+    }
+
+    /* ==========================================================================
+       5. STUDENT DASHBOARD RENDERING
+       ========================================================================== */
+    function renderStudentDashboard() {
+      if (!currentUser) return;
+      document.getElementById('dashWelcomeName').textContent = `Welcome, ${currentUser.name}! 👋`;
+      document.getElementById('statBestScore').textContent = currentUser.bestScore !== undefined ? `${currentUser.bestScore} / 50` : '0 / 50';
+      document.getElementById('statAttempts').textContent = currentUser.attempts || 0;
+    }
+
+    /* ==========================================================================
+       6. ALGORITHMIC BILINGUAL QUESTION GENERATION ENGINE (50 QUESTIONS)
+       ========================================================================== */
+    /**
+     * Dynamically and algorithmically generates 50 distinct G.I.T / A-Level ICT questions.
+     * Guaranteed bilingual Sinhala & English for questions, options, and explanations.
+     */
+    function generate50QuizQuestions() {
+      const questionPool = [];
+
+      // HELPER: Shuffle array
+      const shuffle = arr => arr.sort(() => Math.random() - 0.5);
+
+      // --- GENERATOR 1: BINARY CONVERSIONS (8 Questions) ---
+      for (let i = 0; i < 8; i++) {
+        const type = i % 4;
+        if (type === 0) {
+          // Binary to Decimal
+          const val = Math.floor(Math.random() * 120) + 15;
+          const bin = val.toString(2);
+          const correct = val.toString(10);
+          const wrongs = [
+            (val + (Math.random() > 0.5 ? 2 : -2)).toString(10),
+            (val + 4).toString(10),
+            (val - 3).toString(10)
+          ];
+          const options = shuffle([
+            { si: `${correct} (දශම)`, en: `${correct} (Decimal)`, correct: true },
+            { si: `${wrongs[0]} (දශම)`, en: `${wrongs[0]} (Decimal)`, correct: false },
+            { si: `${wrongs[1]} (දශම)`, en: `${wrongs[1]} (Decimal)`, correct: false },
+            { si: `${wrongs[2]} (දශම)`, en: `${wrongs[2]} (Decimal)`, correct: false }
+          ]);
+          questionPool.push({
+            category: 'Number Systems / සංඛ්‍යා පද්ධති',
+            siText: `${bin}₂ ද්වීමය සංඛ්‍යාවට අනුරූප දශම (Decimal) අගය කුමක්ද?`,
+            enText: `What is the decimal equivalent of the binary number ${bin}₂?`,
+            code: null,
+            options,
+            expSi: `${bin}₂ සංඛ්‍යාව දශම බවට හැරවීමේදී 2හි බලයන්ගෙන් ගුණ කර එකතු කල විට අගය ${val} වේ.`,
+            expEn: `Converting ${bin}₂ to decimal by multiplying each bit by powers of 2 gives ${val}.`
+          });
+        } else if (type === 1) {
+          // Decimal to Binary
+          const val = Math.floor(Math.random() * 80) + 20;
+          const correct = val.toString(2);
+          const w1 = (val + 1).toString(2);
+          const w2 = (val - 1).toString(2);
+          const w3 = (val + 2).toString(2);
+          const options = shuffle([
+            { si: `${correct}₂`, en: `${correct}₂`, correct: true },
+            { si: `${w1}₂`, en: `${w1}₂`, correct: false },
+            { si: `${w2}₂`, en: `${w2}₂`, correct: false },
+            { si: `${w3}₂`, en: `${w3}₂`, correct: false }
+          ]);
+          questionPool.push({
+            category: 'Number Systems / සංඛ්‍යා පද්ධති',
+            siText: `${val}₁₀ දශම සංඛ්‍යාවට සමාන ද්වීමය (Binary) සංඛ්‍යාව කුමක්ද?`,
+            enText: `What is the binary representation of the decimal number ${val}₁₀?`,
+            code: null,
+            options,
+            expSi: `${val} සංඛ්‍යාව 2න් අනුක්‍රමිකව බෙදූ විට ලැබෙන ශේෂයන් පහළ සිට ඉහළට ලියූ විට ${correct}₂ ලැබේ.`,
+            expEn: `Successively dividing ${val} by 2 and recording remainders from bottom to top yields ${correct}₂.`
+          });
+        } else if (type === 2) {
+          // Hexadecimal Conversion
+          const hexList = ['1A', '2F', '3B', '4C', '5E', '6D', '7A', 'A5', '3D'];
+          const hex = hexList[Math.floor(Math.random() * hexList.length)];
+          const decVal = parseInt(hex, 16);
+          const binVal = decVal.toString(2);
+          const options = shuffle([
+            { si: `${binVal}₂ (${decVal}₁₀)`, en: `${binVal}₂ (${decVal}₁₀)`, correct: true },
+            { si: `${(decVal + 2).toString(2)}₂`, en: `${(decVal + 2).toString(2)}₂`, correct: false },
+            { si: `${(decVal - 3).toString(2)}₂`, en: `${(decVal - 3).toString(2)}₂`, correct: false },
+            { si: `${(decVal + 5).toString(2)}₂`, en: `${(decVal + 5).toString(2)}₂`, correct: false }
+          ]);
+          questionPool.push({
+            category: 'Number Systems / සංඛ්‍යා පද්ධති',
+            siText: `${hex}₁₆ ෂඩ්දශම (Hexadecimal) සංඛ්‍යාවට අනුරූප ද්වීමය අගය වන්නේ:`,
+            enText: `What is the binary equivalent of the hexadecimal number ${hex}₁₆?`,
+            code: null,
+            options,
+            expSi: `සෑම ෂඩ්දශම සංකේතයක්ම බිටු 4ක ද්වීමය අගයක් බවට හැරවීමෙන් ${binVal}₂ ලැබේ (${decVal}₁₀).`,
+            expEn: `Converting each hexadecimal digit into its 4-bit binary group gives ${binVal}₂ (decimal ${decVal}).`
+          });
+        } else {
+          // Storage units
+          const gb = Math.floor(Math.random() * 4) + 2;
+          const mb = gb * 1024;
+          const options = shuffle([
+            { si: `${mb} MB`, en: `${mb} MB`, correct: true },
+            { si: `${gb * 1000} MB`, en: `${gb * 1000} MB`, correct: false },
+            { si: `${gb * 512} MB`, en: `${gb * 512} MB`, correct: false },
+            { si: `${mb * 8} MB`, en: `${mb * 8} MB`, correct: false }
+          ]);
+          questionPool.push({
+            category: 'Storage Capacity / දත්ත ධාරිතාව',
+            siText: `${gb} GB (Gigabytes) ධාරිතාවකට සමාන මෙගාබයිට් (Megabytes - MB) ප්‍රමාණය කොපමණද?`,
+            enText: `How many Megabytes (MB) are equivalent to ${gb} GB of digital storage?`,
+            code: null,
+            options,
+            expSi: `1 GB = 1024 MB බැවින්, ${gb} GB = ${gb} × 1024 = ${mb} MB වේ.`,
+            expEn: `Since 1 GB = 1024 MB, ${gb} GB = ${gb} × 1024 = ${mb} MB.`
+          });
+        }
+      }
+
+      // --- GENERATOR 2: SPREADSHEET FORMULAS (8 Questions) ---
+      const sheetScenarios = [
+        {
+          name: 'SUM formula',
+          cells: [15, 25, 10, 30],
+          formula: '=SUM(A1:A4)',
+          calc: () => 15 + 25 + 10 + 30,
+          exp: 'A1 සිට A4 දක්වා සියලු අගයන්හි එකතුව 15+25+10+30 = 80 වේ.'
+        },
+        {
+          name: 'AVERAGE formula',
+          cells: [20, 40, 60, 80],
+          formula: '=AVERAGE(B1:B4)',
+          calc: () => (20 + 40 + 60 + 80) / 4,
+          exp: 'B1 සිට B4 දක්වා අගයන්හි මධ්‍යන්‍යය (200 / 4) = 50 වේ.'
+        },
+        {
+          name: 'COUNT formula',
+          cells: [45, 'ICT', 90, 'Pass'],
+          formula: '=COUNT(A1:A4)',
+          calc: () => 2,
+          exp: 'COUNT ශ්‍රිතය මඟින් ගණනය කරනුයේ සංඛ්‍යාත්මක අගයන් (Numbers) පමණි. මෙහි සංඛ්‍යා 2කි.'
+        },
+        {
+          name: 'MAX & MIN',
+          cells: [12, 85, 34, 99],
+          formula: '=MAX(C1:C4) - MIN(C1:C4)',
+          calc: () => 99 - 12,
+          exp: 'උපරිම අගය 99 වන අතර අවම අගය 12 වේ. 99 - 12 = 87.'
+        },
+        {
+          name: 'IF Condition Pass',
+          cells: [65],
+          formula: '=IF(A1 >= 50, "Pass", "Fail")',
+          calc: () => "Pass",
+          exp: 'A1 හි අගය 65 වන අතර එය 50ට වඩා විශාල බැවින් කොන්දේසිය සත්‍ය වී "Pass" ලැබේ.'
+        },
+        {
+          name: 'Cell Referencing Absolute',
+          cells: ['$B$2'],
+          formula: '=$A$1 * B1',
+          calc: () => "නිරපේක්ෂ සෛල යොමුව (Absolute Cell Reference)",
+          exp: 'ඩොලර් ($) ලකුණ භාවිත කරන්නේ සෛලයක් පිටපත් කිරීමේදී වෙනස් නොවන පරිදි ස්ථාවරව තබා ගැනීමටයි.'
+        },
+        {
+          name: 'Spreadsheet Error #DIV/0!',
+          cells: [100, 0],
+          formula: '=A1 / B1',
+          calc: () => "#DIV/0!",
+          exp: 'ඕනෑම සංඛ්‍යාවක් බිංදුවෙන් (0) බෙදීමට උත්සාහ කළ විට #DIV/0! දෝෂය ලැබේ.'
+        },
+        {
+          name: 'COUNTA Formula',
+          cells: [10, "Hello", "", 45],
+          formula: '=COUNTA(A1:A4)',
+          calc: () => 3,
+          exp: 'COUNTA මඟින් හිස් නොවන (non-empty) සෛල ගණන ගණනය කෙරේ. මෙහි හිස් නොවන සෛල 3ක් ඇත.'
+        }
+      ];
+
+      sheetScenarios.forEach(sc => {
+        const correctVal = String(sc.calc());
+        let dist;
+        if (typeof sc.calc() === 'number') {
+          const num = sc.calc();
+          dist = [String(num + 10), String(num - 5), String(num * 2)];
+        } else if (correctVal === 'Pass') {
+          dist = ['Fail', 'ERROR', 'TRUE'];
+        } else if (correctVal === '#DIV/0!') {
+          dist = ['#VALUE!', '#NAME?', '0'];
+        } else {
+          dist = ['සාපේක්ෂ සෛල යොමුව (Relative)', 'මිශ්‍ර සෛල යොමුව (Mixed)', 'ශ්‍රිත දෝෂයක් (Function Error)'];
+        }
+
+        const options = shuffle([
+          { si: correctVal, en: correctVal, correct: true },
+          { si: dist[0], en: dist[0], correct: false },
+          { si: dist[1], en: dist[1], correct: false },
+          { si: dist[2], en: dist[2], correct: false }
+        ]);
+
+        questionPool.push({
+          category: 'Spreadsheets / පැතුරුම්පත්',
+          siText: `පැතුරුම්පතක ${sc.formula} සූත්‍රය ඇතුළත් කළ විට ලැබෙන ප්‍රතිදානය (Output) කුමක්ද?`,
+          enText: `What is the resulting output when the formula ${sc.formula} is evaluated in a spreadsheet?`,
+          code: null,
+          options,
+          expSi: sc.exp,
+          expEn: `Formula evaluation: ${sc.exp}`
+        });
+      });
+
+      // --- GENERATOR 3: LOGIC GATES & BOOLEAN (8 Questions) ---
+      const gateQuestions = [
+        {
+          si: 'A = 1 සහ B = 0 වන විට AND ද්වාරයක ප්‍රතිදානය කුමක්ද?',
+          en: 'What is the output of an AND gate when input A = 1 and input B = 0?',
+          options: [
+            { si: '0', en: '0', correct: true },
+            { si: '1', en: '1', correct: false },
+            { si: 'High Impedance', en: 'High Impedance', correct: false },
+            { si: 'අර්ථ දැක්විය නොහැක', en: 'Undefined', correct: false }
+          ],
+          expSi: 'AND ද්වාරයක ප්‍රතිදානය 1 වන්නේ සියලු ආදානයන් 1 වූ විට පමණි. මෙහි B = 0 බැවින් ප්‍රතිදානය 0 වේ.',
+          expEn: 'An AND gate only outputs 1 when all inputs are 1. Since B = 0, the output is 0.'
+        },
+        {
+          si: 'ආදාන දෙකම එකිනෙකට වෙනස් වූ විට පමණක් ප්‍රතිදානය 1 වන තාර්කික ද්වාරය කුමක්ද?',
+          en: 'Which logic gate produces an output of 1 only when its two inputs are different?',
+          options: [
+            { si: 'XOR ද්වාරය (Exclusive OR)', en: 'XOR Gate', correct: true },
+            { si: 'AND ද්වාරය', en: 'AND Gate', correct: false },
+            { si: 'NOR ද්වාරය', en: 'NOR Gate', correct: false },
+            { si: 'NAND ද්වාරය', en: 'NAND Gate', correct: false }
+          ],
+          expSi: 'XOR (Exclusive OR) ද්වාරය ආදානයන් අසමාන වන විට (0,1 හෝ 1,0) ප්‍රතිදානය 1 ලබාදෙයි.',
+          expEn: 'The XOR gate outputs 1 only when inputs are distinct (i.e., (0,1) or (1,0)).'
+        },
+        {
+          si: 'සියලු ආදාන 0 වූ විට පමණක් ප්‍රතිදානය 1 ලබාදෙන තාර්කික ද්වාරය කුමක්ද?',
+          en: 'Which logic gate outputs 1 ONLY when all its inputs are 0?',
+          options: [
+            { si: 'NOR ද්වාරය', en: 'NOR Gate', correct: true },
+            { si: 'OR ද්වාරය', en: 'OR Gate', correct: false },
+            { si: 'NAND ද්වාරය', en: 'NAND Gate', correct: false },
+            { si: 'AND ද්වාරය', en: 'AND Gate', correct: false }
+          ],
+          expSi: 'NOR ද්වාරය යනු OR ද්වාරයේ ප්‍රතිලෝමයයි. ආදාන 0 සහ 0 වූ විට OR අගය 0 වන අතර NOR අගය 1 වේ.',
+          expEn: 'A NOR gate is an inverted OR gate; 0 NOR 0 produces 1.'
+        },
+        {
+          si: 'ඩි මෝගන්ගේ (De Morgan’s) පළමු නියමයට අනුව (A . B)\' සමාන වන්නේ:',
+          en: 'According to De Morgan\'s theorem, the expression (A · B)\' is equivalent to:',
+          options: [
+            { si: 'A\' + B\'', en: 'A\' + B\'', correct: true },
+            { si: 'A\' . B\'', en: 'A\' · B\'', correct: false },
+            { si: '(A + B)\'', en: '(A + B)\'', correct: false },
+            { si: 'A + B', en: 'A + B', correct: false }
+          ],
+          expSi: 'De Morgan නියමයට අනුව ගුණිතයක ඌනපූරකය වෙන වෙනම ඌනපූරකයන්ගේ එකතුවට සමාන වේ: (A.B)\' = A\' + B\'.',
+          expEn: 'De Morgan\'s Law states that the complement of a product equals the sum of the complements: (A·B)\' = A\' + B\'.'
+        },
+        {
+          si: 'A = 1, B = 1 වන විට NAND ද්වාරයක ප්‍රතිදානය (Output) කුමක්ද?',
+          en: 'What is the output of a NAND gate when A = 1 and B = 1?',
+          options: [
+            { si: '0', en: '0', correct: true },
+            { si: '1', en: '1', correct: false },
+            { si: '2', en: '2', correct: false },
+            { si: 'දෝෂයක්', en: 'Error', correct: false }
+          ],
+          expSi: '1 AND 1 = 1 බැවින් එහි NOT අගය 0 වේ. එබැවින් 1 NAND 1 = 0 වේ.',
+          expEn: 'Since 1 AND 1 = 1, inverting it with NOT yields 0.'
+        },
+        {
+          si: 'තාර්කික ද්වාර අතරින් "සර්වත්‍ර ද්වාර" (Universal Gates) ලෙස හඳුන්වන්නේ:',
+          en: 'Which pair of logic gates are known as "Universal Gates"?',
+          options: [
+            { si: 'NAND සහ NOR', en: 'NAND and NOR', correct: true },
+            { si: 'AND සහ OR', en: 'AND and OR', correct: false },
+            { si: 'NOT සහ XOR', en: 'NOT and XOR', correct: false },
+            { si: 'XOR සහ XNOR', en: 'XOR and XNOR', correct: false }
+          ],
+          expSi: 'NAND සහ NOR ද්වාර පමණක් භාවිතයෙන් අනෙකුත් ඕනෑම මූලික තාර්කික ද්වාරයක් නිර්මාණය කළ හැකි බැවින් ඒවා සර්වත්‍ර ද්වාර වේ.',
+          expEn: 'NAND and NOR can synthesize any other basic logic gate, making them Universal Gates.'
+        },
+        {
+          si: 'A + 0 බූලීය ප්‍රකාශනයේ (Boolean expression) සුළු කළ අගය වන්නේ:',
+          en: 'What is the simplified result of the Boolean identity A + 0?',
+          options: [
+            { si: 'A', en: 'A', correct: true },
+            { si: '0', en: '0', correct: false },
+            { si: '1', en: '1', correct: false },
+            { si: 'A\'', en: 'A\'', correct: false }
+          ],
+          expSi: 'බූලීය අනන්‍යතාවලට අනුව ඕනෑම විචල්‍යයක් 0 සමඟ OR කළ විට එම විචල්‍යයේ අගයම (A) ලැබේ.',
+          expEn: 'According to identity laws of Boolean algebra, A + 0 = A.'
+        },
+        {
+          si: 'ආදාන 3ක් ඇති තාර්කික පරිපථයක සත්‍යතා වගුවේ (Truth Table) පේළි (Rows) කීයක් තිබේද?',
+          en: 'How many rows are present in the truth table of a logic circuit with 3 inputs?',
+          options: [
+            { si: '8 (2³)', en: '8 (2³)', correct: true },
+            { si: '6', en: '6', correct: false },
+            { si: '4 (2²)', en: '4 (2²)', correct: false },
+            { si: '16 (2⁴)', en: '16 (2⁴)', correct: false }
+          ],
+          expSi: 'ආදානයන් n සංඛ්‍යාවක් ඇති විට සත්‍යතා වගුවේ පේළි සංඛ්‍යාව 2ⁿ සූත්‍රයෙන් ගණනය කෙරේ. 2³ = 8.',
+          expEn: 'For n inputs, the number of combinations in a truth table is 2ⁿ. Thus, 2³ = 8 rows.'
+        }
+      ];
+
+      gateQuestions.forEach(g => {
+        questionPool.push({
+          category: 'Logic Gates / තාර්කික ද්වාර',
+          siText: g.si,
+          enText: g.en,
+          code: null,
+          options: shuffle(g.options),
+          expSi: g.expSi,
+          expEn: g.expEn
+        });
+      });
+
+      // --- GENERATOR 4: HTML & WEB DEVELOPMENT (8 Questions) ---
+      const htmlQuestions = [
+        {
+          si: 'වෙබ් පිටුවක අධිසබැඳියක් (Hyperlink) නිර්මාණය කිරීමට භාවිත කරන HTML ටැගය කුමක්ද?',
+          en: 'Which HTML tag is used to create a hyperlink to another web page?',
+          options: [
+            { si: '<a>', en: '<a>', correct: true },
+            { si: '<link>', en: '<link>', correct: false },
+            { si: '<href>', en: '<href>', correct: false },
+            { si: '<url>', en: '<url>', correct: false }
+          ],
+          expSi: 'HTML හි Anchor tag හෙවත් <a> ටැගය href ගුණාංගය සමඟ අධිසබැඳි තැනීමට යොදාගනී.',
+          expEn: 'The anchor tag <a> alongside the "href" attribute creates hyperlinks in HTML.'
+        },
+        {
+          si: 'වෙබ් පිටුවකට පින්තූරයක් ඇතුළත් කිරීමේදී රූපය දිස් නොවන්නේ නම් ඒ වෙනුවට විකල්ප පෙළක් පෙන්වීමට යොදන attribute එක කුමක්ද?',
+          en: 'Which attribute in the <img> tag specifies an alternate text if the image cannot be displayed?',
+          options: [
+            { si: 'alt', en: 'alt', correct: true },
+            { si: 'title', en: 'title', correct: false },
+            { si: 'src', en: 'src', correct: false },
+            { si: 'description', en: 'description', correct: false }
+          ],
+          expSi: '<img> ටැගයේ "alt" (Alternative text) ගුණාංගය භාවිත කරන්නේ පින්තූරය නොපෙන්වන විට පෙළක් පෙන්වීමටය.',
+          expEn: 'The "alt" attribute provides alternative text for screen readers or when images fail to load.'
+        },
+        {
+          si: 'අනුක්‍රමික / අංකිත ලැයිස්තුවක් (Numbered List) සැකසීම සඳහා යොදාගන්නා HTML ටැගය කුමක්ද?',
+          en: 'Which HTML element is used to define an ordered (numbered) list?',
+          options: [
+            { si: '<ol>', en: '<ol>', correct: true },
+            { si: '<ul>', en: '<ul>', correct: false },
+            { si: '<li>', en: '<li>', correct: false },
+            { si: '<dl>', en: '<dl>', correct: false }
+          ],
+          expSi: '<ol> (Ordered List) මඟින් අංකිත ලැයිස්තු ද, <ul> (Unordered List) මඟින් බුලට් සහිත ලැයිස්තු ද සාදයි.',
+          expEn: '<ol> defines an ordered list with numbers, while <ul> creates unordered bulleted lists.'
+        },
+        {
+          si: 'HTML වගුවක තිරස් සෛල කිහිපයක් එකට ඒකාබද්ධ කිරීම (Merge cells horizontally) සඳහා යොදන ගුණාංගය කුමක්ද?',
+          en: 'Which attribute is used to merge multiple table cells horizontally across columns?',
+          options: [
+            { si: 'colspan', en: 'colspan', correct: true },
+            { si: 'rowspan', en: 'rowspan', correct: false },
+            { si: 'cellspacing', en: 'cellspacing', correct: false },
+            { si: 'merge', en: 'merge', correct: false }
+          ],
+          expSi: 'තීරු ඒකාබද්ධ කිරීමට colspan ද, පේළි ඒකාබද්ධ කිරීමට rowspan ද භාවිත කෙරේ.',
+          expEn: '"colspan" merges cells across multiple columns, while "rowspan" merges across rows.'
+        },
+        {
+          si: 'HTML ආකෘතියක (Form) පරිශීලකයා ඇතුළත් කරන මුරපද අක්ෂර ආවරණය කර පෙන්වීමට යොදන input type අගය කුමක්ද?',
+          en: 'Which input type value masks user-entered characters for secure passwords in an HTML form?',
+          options: [
+            { si: 'type="password"', en: 'type="password"', correct: true },
+            { si: 'type="text"', en: 'type="text"', correct: false },
+            { si: 'type="hidden"', en: 'type="hidden"', correct: false },
+            { si: 'type="secret"', en: 'type="secret"', correct: false }
+          ],
+          expSi: '<input type="password"> මඟින් අක්ෂර වෙනුවට තිත් (dots) හෝ තරු ලකුණු පෙන්වයි.',
+          expEn: '<input type="password"> renders dots/asterisks to conceal sensitive characters.'
+        },
+        {
+          si: 'වෙබ් පිටුවක පසුබිම් වර්ණය නිල් (Blue) කිරීමට නිවැරදි CSS කේතය වන්නේ:',
+          en: 'Which is the correct CSS property to set the background color of an element to blue?',
+          options: [
+            { si: 'background-color: blue;', en: 'background-color: blue;', correct: true },
+            { si: 'color: blue;', en: 'color: blue;', correct: false },
+            { si: 'bgcolor: blue;', en: 'bgcolor: blue;', correct: false },
+            { si: 'canvas-color: blue;', en: 'canvas-color: blue;', correct: false }
+          ],
+          expSi: 'CSS හි පසුබිම් වර්ණය සැකසීමට background-color ගුණාංගය යොදාගනී. color යොදාගන්නේ අකුරු වල වර්ණයටයි.',
+          expEn: '"background-color" sets background fill, whereas "color" controls text foreground color.'
+        },
+        {
+          si: 'HTML හි විශාලතම මාතෘකාව (Heading) සඳහා යොදන ටැගය කුමක්ද?',
+          en: 'Which HTML tag defines the largest and most prominent heading?',
+          options: [
+            { si: '<h1>', en: '<h1>', correct: true },
+            { si: '<h6>', en: '<h6>', correct: false },
+            { si: '<head>', en: '<head>', correct: false },
+            { si: '<heading>', en: '<heading>', correct: false }
+          ],
+          expSi: 'HTML හි <h1> විශාලතම මාතෘකාව වන අතර <h6> කුඩාම මාතෘකාව වේ.',
+          expEn: '<h1> is the top-level largest heading; <h6> is the smallest.'
+        },
+        {
+          si: '#FF0000 ෂඩ්දශම වර්ණ කේතයෙන් (Hex color code) නිරූපණය වන්නේ කුමන වර්ණයද?',
+          en: 'Which color is represented by the hexadecimal color code #FF0000?',
+          options: [
+            { si: 'රතු (Red)', en: 'Red', correct: true },
+            { si: 'කොළ (Green)', en: 'Green', correct: false },
+            { si: 'නිල් (Blue)', en: 'Blue', correct: false },
+            { si: 'කළු (Black)', en: 'Black', correct: false }
+          ],
+          expSi: 'RGB ආකෘතියේ පළමු අගයන් දෙක Red නියෝජනය කරයි. FF යනු උපරිම රතු අගයයි.',
+          expEn: 'In #RRGGBB format, #FF0000 has maximum red intensity with zero green and blue.'
+        }
+      ];
+
+      htmlQuestions.forEach(q => {
+        questionPool.push({
+          category: 'HTML & Web Design / වෙබ් නිර්මාණය',
+          siText: q.si,
+          enText: q.en,
+          code: null,
+          options: shuffle(q.options),
+          expSi: q.expSi,
+          expEn: q.expEn
+        });
+      });
+
+      // --- GENERATOR 5: PSEUDOCODE & ALGORITHMS (6 Questions) ---
+      const loopLimit = Math.floor(Math.random() * 3) + 3; // 3 to 5
+      let loopSum = 0;
+      for (let k = 1; k <= loopLimit; k++) loopSum += k;
+
+      const pseudo1 = `Total = 0\ni = 1\nWHILE i <= ${loopLimit} DO\n    Total = Total + i\n    i = i + 1\nENDWHILE\nOUTPUT Total`;
+      questionPool.push({
+        category: 'Pseudocode & Loops / ව්‍යාජ කේත',
+        siText: 'පහත ව්‍යාජ කේතය (Pseudocode) ක්‍රියාත්මක වූ පසු Total විචල්‍යයේ අවසන් අගය කුමක්ද?',
+        enText: 'What is the final printed value of Total after the following pseudocode completes execution?',
+        code: pseudo1,
+        options: shuffle([
+          { si: `${loopSum}`, en: `${loopSum}`, correct: true },
+          { si: `${loopSum - 1}`, en: `${loopSum - 1}`, correct: false },
+          { si: `${loopLimit}`, en: `${loopLimit}`, correct: false },
+          { si: `${loopSum + loopLimit}`, en: `${loopSum + loopLimit}`, correct: false }
+        ]),
+        expSi: `ලූපය 1 සිට ${loopLimit} දක්වා ක්‍රියාත්මක වන අතර 1 සිට ${loopLimit} දක්වා සංඛ්‍යා වල ඓක්‍යය ${loopSum} වේ.`,
+        expEn: `The while loop iterates from 1 to ${loopLimit}, accumulating the sum 1+2+...+${loopLimit} = ${loopSum}.`
+      });
+
+      const pseudo2 = `x = 17\ny = 5\nans = x MOD y\nOUTPUT ans`;
+      questionPool.push({
+        category: 'Algorithms & Operators / ගණිත කර්ම',
+        siText: 'පහත ඇල්ගොරිතමයේ ans විචල්‍යය මඟින් ප්‍රතිදානය කරන්නේ කුමන අගයද?',
+        enText: 'What is the value of "ans" output by the following algorithm fragment?',
+        code: pseudo2,
+        options: shuffle([
+          { si: '2', en: '2', correct: true },
+          { si: '3', en: '3', correct: false },
+          { si: '3.4', en: '3.4', correct: false },
+          { si: '0', en: '0', correct: false }
+        ]),
+        expSi: 'MOD (මොඩියුලර්) ක්‍රියාවලිය මඟින් බෙදූ විට ලැබෙන ශේෂය ගණනය කරයි. 17 / 5 = 3 සහ ශේෂය 2 වේ.',
+        expEn: 'The MOD operator returns the division remainder: 17 divided by 5 equals 3 with a remainder of 2.'
+      });
+
+      const pseudo3 = `marks = 72\nIF marks >= 75 THEN\n    grade = "A"\nELSE IF marks >= 65 THEN\n    grade = "B"\nELSE\n    grade = "C"\nENDIF\nOUTPUT grade`;
+      questionPool.push({
+        category: 'Control Structures / පාලන ව්‍යුහ',
+        siText: 'marks = 72 වන විට පහත තේරීම් ව්‍යුහයෙන් ලැබෙන grade අගය කුමක්ද?',
+        enText: 'What is the outputted grade from the nested selection statement when marks = 72?',
+        code: pseudo3,
+        options: shuffle([
+          { si: '"B"', en: '"B"', correct: true },
+          { si: '"A"', en: '"A"', correct: false },
+          { si: '"C"', en: '"C"', correct: false },
+          { si: '"Fail"', en: '"Fail"', correct: false }
+        ]),
+        expSi: '72 යනු 75ට අඩු නමුත් 65ට වැඩි බැවින් දෙවන ELSE IF කොන්දේසිය සත්‍ය වී "B" ලැබේ.',
+        expEn: 'Since 72 < 75 and 72 >= 65, the second branch matches, assigning "B".'
+      });
+
+      questionPool.push({
+        category: 'Flowcharts / ගැලීම් සටහන්',
+        siText: 'ගැලීම් සටහනක තීරණයක් (Decision / Branching) නිරූපණය කිරීමට භාවිත කරන ජ්‍යාමිතික හැඩතලය කුමක්ද?',
+        enText: 'Which standard symbol represents a decision or condition check in a flowchart?',
+        code: null,
+        options: shuffle([
+          { si: 'රොම්බසය / දියමන්ති හැඩය (Diamond)', en: 'Diamond (Rhombus)', correct: true },
+          { si: 'සෘජුකෝණාස්‍රය (Rectangle)', en: 'Rectangle', correct: false },
+          { si: 'ඉලිප්සය / ඕවලාකාරය (Oval)', en: 'Oval', correct: false },
+          { si: 'සමාන්තරාස්‍රය (Parallelogram)', en: 'Parallelogram', correct: false }
+        ]),
+        expSi: 'තීරණ ගැනීම සඳහා රොම්බසය ද, ක්‍රියාවලි (Process) සඳහා සෘජුකෝණාස්‍රය ද, ආදාන/ප්‍රතිදාන සඳහා සමාන්තරාස්‍රය ද යොදාගනී.',
+        expEn: 'A diamond shape denotes conditional branching, a rectangle is a process, and a parallelogram is I/O.'
+      });
+
+      const pseudo4 = `count = 0\nFOR j = 1 TO 4 DO\n    count = count + 2\nENDFOR\nOUTPUT count`;
+      questionPool.push({
+        category: 'Loops & Iteration / ලූප',
+        siText: 'පහත FOR ලූපය ක්‍රියාත්මක වීමෙන් පසු count හි අගය කුමක්ද?',
+        enText: 'What is the final value of count after the FOR loop completes?',
+        code: pseudo4,
+        options: shuffle([
+          { si: '8', en: '8', correct: true },
+          { si: '4', en: '4', correct: false },
+          { si: '6', en: '6', correct: false },
+          { si: '10', en: '10', correct: false }
+        ]),
+        expSi: 'ලූපය 4 වරක් ක්‍රියාත්මක වේ (j = 1,2,3,4). සෑම වටයකදීම 2 බැගින් එකතු වන බැවින් 4 × 2 = 8 වේ.',
+        expEn: 'The loop executes 4 times, adding 2 in each iteration: 4 * 2 = 8.'
+      });
+
+      questionPool.push({
+        category: 'Data Structures / දත්ත ව්‍යුහ',
+        siText: 'LIFO (Last In First Out - අවසන්ව ඇතුළත් කළ දෑ පළමුව පිටතට ගැනීම) පිළිවෙළට ක්‍රියා කරන දත්ත ව්‍යුහය කුමක්ද?',
+        enText: 'Which linear data structure operates strictly on the LIFO (Last In, First Out) principle?',
+        code: null,
+        options: shuffle([
+          { si: 'ස්ටැකය (Stack)', en: 'Stack', correct: true },
+          { si: 'පෝලිම (Queue)', en: 'Queue', correct: false },
+          { si: 'සබැඳි ලැයිස්තුව (Linked List)', en: 'Linked List', correct: false },
+          { si: 'ගස (Tree)', en: 'Tree', correct: false }
+        ]),
+        expSi: 'Stack දත්ත ව්‍යුහය LIFO ක්‍රමයට ක්‍රියා කරන අතර Queue දත්ත ව්‍යුහය FIFO (First In First Out) ක්‍රමයට ක්‍රියා කරයි.',
+        expEn: 'A Stack utilizes LIFO, whereas a Queue follows FIFO (First In, First Out).'
+      });
+
+      // --- GENERATOR 6: SQL & DATABASES (6 Questions) ---
+      const sqlQuestions = [
+        {
+          si: 'Student වගුවෙන් marks 75 හෝ ඊට වැඩි සියලු සිසුන්ගේ නම් ලබාගැනීමට නිවැරදි SQL විධානය කුමක්ද?',
+          en: 'Which SQL statement retrieves the names of all students whose marks are 75 or higher from the Student table?',
+          sql: 'SELECT name FROM Student WHERE marks >= 75;',
+          options: [
+            { si: 'SELECT name FROM Student WHERE marks >= 75;', en: 'SELECT name FROM Student WHERE marks >= 75;', correct: true },
+            { si: 'GET name IN Student IF marks >= 75;', en: 'GET name IN Student IF marks >= 75;', correct: false },
+            { si: 'SELECT * WHERE marks >= 75 FROM Student;', en: 'SELECT * WHERE marks >= 75 FROM Student;', correct: false },
+            { si: 'EXTRACT name FROM Student HAVING marks >= 75;', en: 'EXTRACT name FROM Student HAVING marks >= 75;', correct: false }
+          ],
+          expSi: 'SQL හි දත්ත තෝරාගැනීමට SELECT, වගුව දැක්වීමට FROM සහ කොන්දේසි පැනවීමට WHERE වගන්තිය යොදයි.',
+          expEn: 'SQL syntax requires SELECT <columns> FROM <table> WHERE <condition>.'
+        },
+        {
+          si: 'සම්බන්ධක දත්ත සමුදායක (Relational Database) එක් එක් වාර්තාවක් අනන්‍යව හඳුනාගැනීම සඳහා යොදාගන්නා යතුර කුමක්ද?',
+          en: 'Which database key uniquely identifies each individual record in a relational database table?',
+          sql: null,
+          options: [
+            { si: 'ප්‍රාථමික යතුර (Primary Key)', en: 'Primary Key', correct: true },
+            { si: 'විදේශීය යතුර (Foreign Key)', en: 'Foreign Key', correct: false },
+            { si: 'ද්විතීයික යතුර (Secondary Key)', en: 'Secondary Key', correct: false },
+            { si: 'සංයුක්ත යතුර (Composite Key)', en: 'Composite Key', correct: false }
+          ],
+          expSi: 'ප්‍රාථමික යතුරකට (Primary Key) අගයක් හිස්ව (NULL) තැබිය නොහැකි අතර අගයන් පුනරාවර්තනය විය නොහැක.',
+          expEn: 'A Primary Key uniquely identifies each row and cannot contain NULL values.'
+        },
+        {
+          si: 'වගුවකට නව වාර්තාවක් (New Record) ඇතුළත් කිරීම සඳහා භාවිත කරන SQL විධානය කුමක්ද?',
+          en: 'Which SQL statement is used to insert a brand new record into a table?',
+          sql: null,
+          options: [
+            { si: 'INSERT INTO', en: 'INSERT INTO', correct: true },
+            { si: 'ADD RECORD', en: 'ADD RECORD', correct: false },
+            { si: 'UPDATE TABLE', en: 'UPDATE TABLE', correct: false },
+            { si: 'CREATE ROW', en: 'CREATE ROW', correct: false }
+          ],
+          expSi: 'නව පේළි ඇතුළත් කිරීමට INSERT INTO ද, පවතින දත්ත වෙනස් කිරීමට UPDATE ද යොදාගනී.',
+          expEn: 'INSERT INTO adds new rows, while UPDATE modifies existing rows.'
+        },
+        {
+          si: 'වගුවක ඇති මුළු පේළි සංඛ්‍යාව (Total rows count) ගණනය කිරීමට යොදාගන්නා SQL ශ්‍රිතය කුමක්ද?',
+          en: 'Which SQL aggregate function returns the total number of rows matching a criteria?',
+          sql: null,
+          options: [
+            { si: 'COUNT()', en: 'COUNT()', correct: true },
+            { si: 'SUM()', en: 'SUM()', correct: false },
+            { si: 'TOTAL()', en: 'TOTAL()', correct: false },
+            { si: 'ROWS()', en: 'ROWS()', correct: false }
+          ],
+          expSi: 'COUNT(*) ශ්‍රිතය මඟින් වගුවේ වාර්තා සංඛ්‍යාව ලබාදෙයි.',
+          expEn: 'COUNT(*) calculates the total quantity of records satisfying the query.'
+        },
+        {
+          si: 'වගු දෙකක් අතර සම්බන්ධතාවක් (Relationship) ගොඩනැගීමට යොදාගන්නා යතුර කුමක්ද?',
+          en: 'Which key is used in a relational table to establish a link with the Primary Key of another table?',
+          sql: null,
+          options: [
+            { si: 'විදේශීය යතුර (Foreign Key)', en: 'Foreign Key', correct: true },
+            { si: 'අපේක්ෂක යතුර (Candidate Key)', en: 'Candidate Key', correct: false },
+            { si: 'සුපිරි යතුර (Super Key)', en: 'Super Key', correct: false },
+            { si: 'විකල්ප යතුර (Alternate Key)', en: 'Alternate Key', correct: false }
+          ],
+          expSi: 'Foreign Key (විදේශීය යතුර) වෙනත් වගුවක Primary Key එකකට යොමු වෙමින් වගු අතර සම්බන්ධතාව ඇති කරයි.',
+          expEn: 'A Foreign Key refers to the Primary Key of another table, ensuring referential integrity.'
+        },
+        {
+          si: 'ප්‍රතිඵල ඉහළ සිට පහළට (Descending Order) පෙළගැස්වීම සඳහා SQL විධානයේ අගට යොදන පදය කුමක්ද?',
+          en: 'Which clause keyword is appended to ORDER BY to sort rows from highest to lowest?',
+          sql: null,
+          options: [
+            { si: 'DESC', en: 'DESC', correct: true },
+            { si: 'ASC', en: 'ASC', correct: false },
+            { si: 'DOWN', en: 'DOWN', correct: false },
+            { si: 'REVERSE', en: 'REVERSE', correct: false }
+          ],
+          expSi: 'අවරෝහණ පිළිවෙළට (Descending) සැකසීමට DESC ද, ආරෝහණ පිළිවෙළට (Ascending) සැකසීමට ASC ද යොදයි.',
+          expEn: 'DESC sorts descending; ASC sorts ascending.'
+        }
+      ];
+
+      sqlQuestions.forEach(sq => {
+        questionPool.push({
+          category: 'SQL & Database / දත්ත සමුදාය',
+          siText: sq.si,
+          enText: sq.en,
+          code: sq.sql,
+          options: shuffle(sq.options),
+          expSi: sq.expSi,
+          expEn: sq.expEn
+        });
+      });
+
+      // --- GENERATOR 7: NETWORKING & PROTOCOLS (7 Questions) ---
+      const networkQuestions = [
+        {
+          si: 'IPv4 ලිපිනයක් බිටු (Bits) කීයකින් සමන්විත වේද?',
+          en: 'How many bits are in a standard IPv4 address?',
+          options: [
+            { si: 'බිටු 32 (32 bits)', en: '32 bits', correct: true },
+            { si: 'බිටු 64 (64 bits)', en: '64 bits', correct: false },
+            { si: 'බිටු 128 (128 bits)', en: '128 bits', correct: false },
+            { si: 'බිටු 16 (16 bits)', en: '16 bits', correct: false }
+          ],
+          expSi: 'IPv4 ලිපිනයක් බිටු 32කින් (බයිට් 4කින්) සමන්විත වන අතර IPv6 ලිපිනයක් බිටු 128කින් සමන්විත වේ.',
+          expEn: 'IPv4 uses 32 bits (4 octets), whereas IPv6 uses 128 bits.'
+        },
+        {
+          si: 'ජාලයක පරිගණක එකක් බිඳ වැටුණද සමස්ත ජාලයේ ක්‍රියාකාරිත්වයට බාධාවක් නොවන, කේන්ද්‍රීය හබ්/ස්විචයක් භාවිත වන ස්ථලකය (Topology) කුමක්ද?',
+          en: 'Which network topology connects all nodes to a central hub/switch so that a single cable failure does not down the whole network?',
+          options: [
+            { si: 'තරු ස්ථලකය (Star Topology)', en: 'Star Topology', correct: true },
+            { si: 'බස් ස්ථලකය (Bus Topology)', en: 'Bus Topology', correct: false },
+            { si: 'මුදු ස්ථලකය (Ring Topology)', en: 'Ring Topology', correct: false },
+            { si: 'රේඛීය ස්ථලකය (Linear Topology)', en: 'Linear Topology', correct: false }
+          ],
+          expSi: 'Star Topology හි සෑම පරිගණකයක්ම මධ්‍යම Switch/Hub එකකට සම්බන්ධ වන බැවින් තනි කේබලයක් කැඩී ගියද අනෙක් පරිගණක ක්‍රියා කරයි.',
+          expEn: 'Star topology connects nodes radially to a central device, isolating cable faults.'
+        },
+        {
+          si: 'ඩොමේන් නාම (උදා: google.com) ඊට අනුරූප IP ලිපිනයන් බවට පරිවර්තනය කරන සේවාව කුමක්ද?',
+          en: 'Which Internet service translates human-friendly domain names (e.g., google.com) into IP addresses?',
+          options: [
+            { si: 'DNS (Domain Name System)', en: 'DNS (Domain Name System)', correct: true },
+            { si: 'DHCP (Dynamic Host Configuration)', en: 'DHCP', correct: false },
+            { si: 'FTP (File Transfer Protocol)', en: 'FTP', correct: false },
+            { si: 'SMTP (Simple Mail Transfer)', en: 'SMTP', correct: false }
+          ],
+          expSi: 'DNS මඟින් මිනිසාට මතක තබාගත හැකි වෙබ් ලිපින පරිගණක තේරුම් ගන්නා IP ලිපින බවට හරවයි.',
+          expEn: 'DNS acts as the phonebook of the Internet, translating domain names to IP addresses.'
+        },
+        {
+          si: 'සුරක්ෂිත වෙබ් ගවේෂණය (Secure Web Browsing) සඳහා භාවිත කරන ප්‍රොටෝකෝලය කුමක්ද?',
+          en: 'Which cryptographic protocol is standard for secure communication over the web (HTTPS)?',
+          options: [
+            { si: 'HTTPS (Port 443)', en: 'HTTPS (Port 443)', correct: true },
+            { si: 'HTTP (Port 80)', en: 'HTTP (Port 80)', correct: false },
+            { si: 'TELNET (Port 23)', en: 'TELNET (Port 23)', correct: false },
+            { si: 'SNMP (Port 161)', en: 'SNMP (Port 161)', correct: false }
+          ],
+          expSi: 'HTTPS මඟින් SSL/TLS සංකේතනය (encryption) යොදාගනිමින් දත්ත හුවමාරුව ආරක්ෂිත කරයි.',
+          expEn: 'HTTPS encrypts communications using TLS/SSL over TCP port 443.'
+        },
+        {
+          si: 'OSI ආකෘතියේ (OSI 7-Layer Model) දත්ත පැකට්ටු සම්ප්‍රේෂණය වන මාර්ගය තීරණය කරන (Routing) ස්ථරය කුමක්ද?',
+          en: 'In the OSI 7-layer model, which layer handles path determination and packet routing?',
+          options: [
+            { si: 'ජාල ස්ථරය (Network Layer - Layer 3)', en: 'Network Layer (Layer 3)', correct: true },
+            { si: 'භෞතික ස්ථරය (Physical Layer)', en: 'Physical Layer', correct: false },
+            { si: 'ප්‍රවාහන ස්ථරය (Transport Layer)', en: 'Transport Layer', correct: false },
+            { si: 'යෙදුම් ස්ථරය (Application Layer)', en: 'Application Layer', correct: false }
+          ],
+          expSi: 'රවුටර් (Routers) සහ IP ලිපින ක්‍රියාත්මක වන්නේ 3 වන ස්ථරය වන Network Layer හිදීය.',
+          expEn: 'Layer 3 (Network Layer) is responsible for logical addressing (IP) and routing.'
+        },
+        {
+          si: 'ජාලයකට සම්බන්ධ වන උපාංග වෙත ස්වයංක්‍රීයව IP ලිපින ලබාදෙන ප්‍රොටෝකෝලය කුමක්ද?',
+          en: 'Which network management protocol automatically assigns dynamic IP addresses to devices joining a network?',
+          options: [
+            { si: 'DHCP', en: 'DHCP', correct: true },
+            { si: 'DNS', en: 'DNS', correct: false },
+            { si: 'ICMP', en: 'ICMP', correct: false },
+            { si: 'ARP', en: 'ARP', correct: false }
+          ],
+          expSi: 'DHCP (Dynamic Host Configuration Protocol) මඟින් ජාලයට එක්වන උපාංග වෙත ස්වයංක්‍රීයව IP ලබාදේ.',
+          expEn: 'DHCP automatically configures and leases IP addresses to client hosts.'
+        },
+        {
+          si: 'විද්‍යුත් තැපැල් පණිවිඩ (Emails) යැවීම සඳහා භාවිත වන ප්‍රොටෝකෝලය කුමක්ද?',
+          en: 'Which protocol is standard for sending electronic mail (email) across networks?',
+          options: [
+            { si: 'SMTP (Simple Mail Transfer Protocol)', en: 'SMTP', correct: true },
+            { si: 'POP3 (Post Office Protocol)', en: 'POP3', correct: false },
+            { si: 'IMAP', en: 'IMAP', correct: false },
+            { si: 'FTP', en: 'FTP', correct: false }
+          ],
+          expSi: 'ඊමේල් යැවීමට SMTP ද, ඊමේල් ලබාගැනීමට (receive) POP3 හෝ IMAP ද භාවිත කෙරේ.',
+          expEn: 'SMTP sends outbound mail, while POP3 and IMAP fetch received messages.'
+        }
+      ];
+
+      networkQuestions.forEach(nq => {
+        questionPool.push({
+          category: 'Networking & Internet / පරිගණක ජාල',
+          siText: nq.si,
+          enText: nq.en,
+          code: null,
+          options: shuffle(nq.options),
+          expSi: nq.expSi,
+          expEn: nq.expEn
+        });
+      });
+
+      // --- GENERATOR 8: HARDWARE, ARCHITECTURE & OS (7 Questions) ---
+      const hardwareQuestions = [
+        {
+          si: 'පරිගණකයේ විදුලි බලය විසන්ධි වූ විට එහි අඩංගු සියලු දත්ත මැකී යන මතක වර්ගය (Volatile Memory) කුමක්ද?',
+          en: 'Which type of computer memory loses its contents immediately when the electrical power is turned off (Volatile)?',
+          options: [
+            { si: 'RAM (Random Access Memory)', en: 'RAM', correct: true },
+            { si: 'ROM (Read Only Memory)', en: 'ROM', correct: false },
+            { si: 'Hard Disk Drive (HDD)', en: 'HDD', correct: false },
+            { si: 'Flash Memory (USB)', en: 'Flash Drive', correct: false }
+          ],
+          expSi: 'RAM යනු විදුලිය විසන්ධි වූ විට දත්ත මැකී යන නශ්‍ය මතකයකි (Volatile). ROM යනු අනශ්‍ය මතකයකි.',
+          expEn: 'RAM is volatile memory requiring continuous power to retain data.'
+        },
+        {
+          si: 'මධ්‍ය සැකසුම් ඒකකයේ (CPU) ගණිතමය සහ තාර්කික මෙහෙයුම් සිදුකරන අනුකොටස කුමක්ද?',
+          en: 'Which sub-unit of the Central Processing Unit (CPU) executes arithmetic and logical operations?',
+          options: [
+            { si: 'ALU (Arithmetic Logic Unit)', en: 'ALU', correct: true },
+            { si: 'CU (Control Unit)', en: 'CU', correct: false },
+            { si: 'රෙජිස්තර (Registers)', en: 'Registers', correct: false },
+            { si: 'System Clock', en: 'System Clock', correct: false }
+          ],
+          expSi: 'ALU මඟින් එකතු කිරීම්, අඩු කිරීම් සහ තාර්කික සැසඳීම් සිදුකරන අතර CU මඟින් උපදෙස් පාලනය කරයි.',
+          expEn: 'The ALU executes mathematical operations and Boolean logic comparisons.'
+        },
+        {
+          si: 'මධ්‍ය සැකසුම් ඒකකයට (CPU) ආසන්නව පිහිටා ඇති, වේගවත්ම මතක වර්ගය කුමක්ද?',
+          en: 'Which memory type is situated closest to or inside the CPU, delivering the lowest latency?',
+          options: [
+            { si: 'රෙජිස්තර සහ කෑෂ් මතකය (Registers / Cache)', en: 'Registers and Cache Memory', correct: true },
+            { si: 'ප්‍රධාන මතකය (RAM)', en: 'Main Memory (RAM)', correct: false },
+            { si: 'ද්විතීයික මතකය (SSD)', en: 'Secondary SSD', correct: false },
+            { si: 'ප්‍රකාශ තැටි (Optical Disc)', en: 'Optical Disc', correct: false }
+          ],
+          expSi: 'මතක ධුරාවලියේ (Memory Hierarchy) වේගවත්ම මතකය වන්නේ රෙජිස්තර සහ L1, L2 කෑෂ් මතකයයි.',
+          expEn: 'CPU registers and internal SRAM cache memory provide the highest access speeds in the hierarchy.'
+        },
+        {
+          si: 'පරිගණකය පණගන්වන (Booting) විට අවශ්‍ය වන මූලික උපදෙස් (BIOS / UEFI) ගබඩා කර ඇත්තේ:',
+          en: 'Where are the initial firmware boot instructions (BIOS/UEFI) permanently stored?',
+          options: [
+            { si: 'ROM (Read Only Memory) චිපය තුළ', en: 'In the ROM chip', correct: true },
+            { si: 'RAM තුළ', en: 'In RAM', correct: false },
+            { si: 'Virtual Memory තුළ', en: 'In Virtual Memory', correct: false },
+            { si: 'කෑෂ් මතකය තුළ', en: 'In Cache Memory', correct: false }
+          ],
+          expSi: 'පරිගණකය ක්‍රියාත්මක කරන BIOS/UEFI ස්ථිරාංගය ROM තුළ ස්ථිරව ගබඩා කර ඇත.',
+          expEn: 'The startup bootloader firmware is stored non-volatily in motherboard ROM/Flash ROM.'
+        },
+        {
+          si: 'ප්‍රධාන මතකයේ (RAM) ඉඩ ප්‍රමාණවත් නොවන විට ද්විතීයික මතකයේ කොටසක් RAM මෙන් භාවිත කිරීම හඳුන්වන්නේ:',
+          en: 'What is the technique where an OS uses a portion of secondary storage as an extension of RAM?',
+          options: [
+            { si: 'අතථ්‍ය මතකය (Virtual Memory)', en: 'Virtual Memory', correct: true },
+            { si: 'කෑෂ් මතකය (Cache Memory)', en: 'Cache Memory', correct: false },
+            { si: 'ස්පූලිං (Spooling)', en: 'Spooling', correct: false },
+            { si: 'බෆර් කිරීම (Buffering)', en: 'Buffering', correct: false }
+          ],
+          expSi: 'Virtual Memory (Paging / Swapping) මඟින් RAM ධාරිතාව ඉක්මවා යන විශාල වැඩසටහන් ධාවනය කිරීමට ඉඩ සලසයි.',
+          expEn: 'Virtual memory pages inactive memory blocks into secondary storage (pagefile/swap).'
+        },
+        {
+          si: 'මුද්‍රණ යන්ත්‍රය (Printer) වැනි මන්දගාමී උපාංග වෙත දත්ත යැවීමේදී මතකයේ රඳවා තබාගෙන පාලනය කිරීමේ ක්‍රියාවලිය හඳුන්වන්නේ:',
+          en: 'Which operating system mechanism queues print jobs on disk to prevent blocking faster applications?',
+          options: [
+            { si: 'ස්පූලිං (Spooling)', en: 'Spooling', correct: true },
+            { si: 'කාල ඛණ්ඩනය (Time Slicing)', en: 'Time Slicing', correct: false },
+            { si: 'ඩිෆ්‍රැග්මන්ටේෂන් (Defragmentation)', en: 'Defragmentation', correct: false },
+            { si: 'සම්පීඩනය (Compression)', en: 'Compression', correct: false }
+          ],
+          expSi: 'SPOOL (Simultaneous Peripheral Operations On-Line) මඟින් මුද්‍රණ ලේඛන බෆරයක රඳවා ගනී.',
+          expEn: 'Spooling manages peripheral job queues asynchronously without halting processing.'
+        },
+        {
+          si: 'විවෘත මූලාශ්‍ර මෙහෙයුම් පද්ධතියක් (Open Source Operating System) සඳහා උදාහරණයක් වන්නේ:',
+          en: 'Which of the following is an example of an Open Source operating system?',
+          options: [
+            { si: 'Linux (Ubuntu)', en: 'Linux (Ubuntu)', correct: true },
+            { si: 'Microsoft Windows 11', en: 'Microsoft Windows 11', correct: false },
+            { si: 'Apple macOS', en: 'Apple macOS', correct: false },
+            { si: 'Apple iOS', en: 'Apple iOS', correct: false }
+          ],
+          expSi: 'Linux මූල කේතය (Source Code) ඕනෑම අයෙකුට නොමිලේ ලබාගත හැකි බැවින් එය විවෘත මූලාශ්‍ර වේ.',
+          expEn: 'Linux distributions like Ubuntu are open-source with freely accessible source code.'
+        }
+      ];
+
+      hardwareQuestions.forEach(hq => {
+        questionPool.push({
+          category: 'Hardware & OS / දෘඩාංග හා මෙහෙයුම් පද්ධති',
+          siText: hq.si,
+          enText: hq.en,
+          code: null,
+          options: shuffle(hq.options),
+          expSi: hq.expSi,
+          expEn: hq.expEn
+        });
+      });
+
+      // Ensure we have at least 50 questions
+      // If pool is slightly short or over, balance to exactly 50
+      let final50 = shuffle([...questionPool]);
+      if (final50.length < 50) {
+        // duplicate with variation if needed
+        while (final50.length < 50) {
+          final50.push(final50[Math.floor(Math.random() * questionPool.length)]);
+        }
+      } else if (final50.length > 50) {
+        final50 = final50.slice(0, 50);
+      }
+
+      return final50;
+    }
+
+    /* ==========================================================================
+       7. QUIZ EXECUTION ENGINE
+       ========================================================================== */
+    function startQuizSession() {
+      if (!currentUser) {
+        showToast('කරුණාකර පළමුව ලොගින් වන්න (Please login first)', 'error');
+        switchView('authView');
+        return;
+      }
+
+      showToast('ප්‍රශ්න 50 විභාගය සූදානම් කෙරේ... (Generating 50 Questions)', 'info');
+      const questions = generate50QuizQuestions();
+
+      quizSession = {
+        questions: questions,
+        currentIndex: 0,
+        userAnswers: [],
+        score: 0,
+        timer: null,
+        timeLeft: 20,
+        isAnswered: false
+      };
+
+      switchView('quizView');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      clearInterval(quizSession.timer);
+      quizSession.isAnswered = false;
+      quizSession.timeLeft = 20;
+
+      const q = quizSession.questions[quizSession.currentIndex];
+      const total = quizSession.questions.length;
+      const currentNum = quizSession.currentIndex + 1;
+
+      // Update counters
+      document.getElementById('quizCounterText').textContent = `Question ${currentNum} of ${total}`;
+      document.getElementById('quizSinhalaCounter').textContent = `(ප්‍රශ්නය ${currentNum.toString().padStart(2, '0')} / ${total})`;
+      document.getElementById('quizProgressBar').style.width = `${((currentNum - 1) / total) * 100}%`;
+      document.getElementById('liveScoreVal').textContent = quizSession.score;
+      document.getElementById('answeredCount').textContent = quizSession.currentIndex;
+
+      // Question metadata
+      document.getElementById('qCategoryBadge').textContent = q.category;
+      document.getElementById('qSinhalaText').textContent = q.siText;
+      document.getElementById('qEnglishText').textContent = q.enText;
+
+      // Code / Snippet
+      const codeBox = document.getElementById('qCodeSnippetBox');
+      if (q.code) {
+        codeBox.style.display = 'block';
+        codeBox.textContent = q.code;
+      } else {
+        codeBox.style.display = 'none';
+      }
+
+      // Hide explanation & next button
+      const expCard = document.getElementById('explanationCard');
+      expCard.classList.remove('show');
+      document.getElementById('nextQuestionBtn').style.display = 'none';
+
+      // Render Options
+      const optionsGrid = document.getElementById('optionsGrid');
+      optionsGrid.innerHTML = '';
+
+      const letters = ['A', 'B', 'C', 'D'];
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.id = `optBtn_${idx}`;
+        btn.innerHTML = `
+          <div class="opt-letter">${letters[idx]}</div>
+          <div class="opt-content">
+            <div class="opt-sinhala">${escapeHtml(opt.si)}</div>
+            <div class="opt-english">${escapeHtml(opt.en)}</div>
+          </div>
+        `;
+        btn.onclick = () => selectOption(idx);
+        optionsGrid.appendChild(btn);
+      });
+
+      // Start Countdown Timer (20 Seconds)
+      updateTimerUI(20);
+      quizSession.timer = setInterval(() => {
+        quizSession.timeLeft--;
+        updateTimerUI(quizSession.timeLeft);
+
+        if (quizSession.timeLeft <= 5 && quizSession.timeLeft > 0) {
+          playSound('tick');
+        }
+
+        if (quizSession.timeLeft <= 0) {
+          clearInterval(quizSession.timer);
+          handleTimeOut();
+        }
+      }, 1000);
+    }
+
+    function updateTimerUI(seconds) {
+      const secEl = document.getElementById('timerSeconds');
+      const badgeEl = document.getElementById('timerBadge');
+      if (!secEl || !badgeEl) return;
+
+      secEl.textContent = Math.max(0, seconds);
+      const percentage = (seconds / 20) * 100;
+      badgeEl.style.setProperty('--time-p', `${percentage}%`);
+
+      if (seconds <= 5) {
+        badgeEl.style.background = `conic-gradient(#ef4444 ${percentage}%, transparent 0)`;
+        secEl.style.color = '#ef4444';
+      } else if (seconds <= 10) {
+        badgeEl.style.background = `conic-gradient(#f59e0b ${percentage}%, transparent 0)`;
+        secEl.style.color = '#f59e0b';
+      } else {
+        badgeEl.style.background = `conic-gradient(#06b6d4 ${percentage}%, transparent 0)`;
+        secEl.style.color = '#fff';
+      }
+    }
+
+    function selectOption(selectedIdx) {
+      if (quizSession.isAnswered) return;
+      quizSession.isAnswered = true;
+      clearInterval(quizSession.timer);
+
+      const q = quizSession.questions[quizSession.currentIndex];
+      const chosen = q.options[selectedIdx];
+      const isCorrect = chosen.correct === true;
+
+      if (isCorrect) {
+        quizSession.score++;
+        playSound('correct');
+      } else {
+        playSound('wrong');
+      }
+
+      // Record answer
+      quizSession.userAnswers.push({
+        question: q,
+        selectedIdx: selectedIdx,
+        isCorrect: isCorrect,
+        timeSpent: 20 - quizSession.timeLeft
+      });
+
+      // Highlight options
+      q.options.forEach((opt, idx) => {
+        const btn = document.getElementById(`optBtn_${idx}`);
+        if (!btn) return;
+        btn.disabled = true;
+
+        if (opt.correct) {
+          btn.classList.add('correct');
+        } else if (idx === selectedIdx && !isCorrect) {
+          btn.classList.add('wrong');
+        }
+      });
+
+      // Show explanation
+      const expCard = document.getElementById('explanationCard');
+      document.getElementById('expSinhala').textContent = q.expSi;
+      document.getElementById('expEnglish').textContent = q.expEn;
+      expCard.classList.add('show');
+
+      // Show Next Question button
+      const nextBtn = document.getElementById('nextQuestionBtn');
+      nextBtn.style.display = 'inline-flex';
+
+      // Auto advance smoothly after 1.8 seconds if user doesn't click
+      setTimeout(() => {
+        // Only if still on this question
+        if (quizSession.userAnswers.length === quizSession.currentIndex + 1) {
+          goToNextQuestion();
+        }
+      }, 1900);
+    }
+
+    function handleTimeOut() {
+      if (quizSession.isAnswered) return;
+      quizSession.isAnswered = true;
+      playSound('wrong');
+
+      const q = quizSession.questions[quizSession.currentIndex];
+
+      // Record as unanswered / incorrect
+      quizSession.userAnswers.push({
+        question: q,
+        selectedIdx: -1,
+        isCorrect: false,
+        timeSpent: 20
+      });
+
+      // Highlight correct answer
+      q.options.forEach((opt, idx) => {
+        const btn = document.getElementById(`optBtn_${idx}`);
+        if (!btn) return;
+        btn.disabled = true;
+        if (opt.correct) {
+          btn.classList.add('correct');
+        }
+      });
+
+      // Show explanation
+      const expCard = document.getElementById('explanationCard');
+      document.getElementById('expSinhala').textContent = `කාලය අවසන් විය! නිවැරදි පිළිතුර: ${q.expSi}`;
+      document.getElementById('expEnglish').textContent = `Time's up! ${q.expEn}`;
+      expCard.classList.add('show');
+
+      const nextBtn = document.getElementById('nextQuestionBtn');
+      nextBtn.style.display = 'inline-flex';
+
+      setTimeout(() => {
+        if (quizSession.userAnswers.length === quizSession.currentIndex + 1) {
+          goToNextQuestion();
+        }
+      }, 2100);
+    }
+
+    function goToNextQuestion() {
+      if (quizSession.currentIndex + 1 < quizSession.questions.length) {
+        quizSession.currentIndex++;
+        renderQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function confirmQuitQuiz() {
+      if (confirm('ඔබට මෙම විභාගයෙන් ඉවත් වීමට අවශ්‍යද? (Do you want to quit the quiz?)')) {
+        clearInterval(quizSession.timer);
+        navigateToDashboard();
+      }
+    }
+
+    /* ==========================================================================
+       8. QUIZ COMPLETION & RESULTS SCREEN
+       ========================================================================== */
+    function finishQuiz() {
+      clearInterval(quizSession.timer);
+      playSound('complete');
+
+      const total = quizSession.questions.length;
+      const score = quizSession.score;
+      const percentage = Math.round((score / total) * 100);
+
+      // Save student score in user profile
+      if (currentUser && !currentUser.isAdmin) {
+        currentUser.attempts = (currentUser.attempts || 0) + 1;
+        if (score > (currentUser.bestScore || 0)) {
+          currentUser.bestScore = score;
+        }
+        currentUser.score = score;
+        currentUser.lastActive = new Date().toISOString();
+
+        // Update in localStorage
+        const users = getStoredUsers();
+        const idx = users.findIndex(u => u.email.toLowerCase() === currentUser.email.toLowerCase());
+        if (idx !== -1) {
+          users[idx] = currentUser;
+          saveStoredUsers(users);
+        }
+        setStoredCurrentUser(currentUser);
+
+        // Auto sync quiz score to Vercel/Google Sheets
+        triggerCloudSync(currentUser, 'quiz_completed');
+      }
+
+      // Display result view
+      switchView('resultsView');
+
+      document.getElementById('resFinalScore').textContent = `${score} / ${total}`;
+      document.getElementById('resPercentage').textContent = `${percentage}%`;
+      document.getElementById('resultScoreCircle').style.setProperty('--score-pct', percentage);
+
+      // Grade classification
+      let grade = 'F';
+      let gradeClass = 'grade-F';
+      let feedback = 'තවදුරටත් පුහුණු වන්න. විෂය නිර්දේශයේ කරුණු නැවත අධ්‍යයනය කරන්න.';
+
+      if (percentage >= 75) {
+        grade = 'A (විශිෂ්ට සාමාර්ථය - Distinction)';
+        gradeClass = 'grade-A';
+        feedback = 'විශිෂ්ටයි! ඔබට උසස් පෙළ ICT / GIT විභාගයට ඉහළ සූදානමක් ඇත.';
+        // Launch confetti celebration
+        if (window.confetti) {
+          confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+        }
+      } else if (percentage >= 65) {
+        grade = 'B (ඉතා හොඳ සාමාර්ථය - Very Good)';
+        gradeClass = 'grade-B';
+        feedback = 'ඉතා හොඳ ප්‍රගතියක්! තව ස්වල්පයක් උත්සාහ කළහොත් A සාමාර්ථයක් පහසුවෙන්ම ලබාගත හැක.';
+      } else if (percentage >= 55) {
+        grade = 'C (සම්මාන සාමාර්ථය - Credit)';
+        gradeClass = 'grade-C';
+        feedback = 'හොඳයි. දුර්වල විෂය කොටස් හඳුනාගෙන ඒවා වැඩිදියුණු කරගන්න.';
+      } else if (percentage >= 35) {
+        grade = 'S (සාමාන්‍ය සාමාර්ථය - Simple Pass)';
+        gradeClass = 'grade-S';
+        feedback = 'සාමාන්‍ය සාමාර්ථයකි. පසුගිය විභාග ප්‍රශ්න පත්‍ර සහ අපගේ WhatsApp චැනලයේ සටහන් පරිශීලනය කරන්න.';
+      }
+
+      const gradeEl = document.getElementById('resGradeBadge');
+      gradeEl.className = `result-grade-badge ${gradeClass}`;
+      gradeEl.textContent = `Grade: ${grade}`;
+      document.getElementById('resFeedbackMsg').textContent = feedback;
+
+      // Render Topic Breakdown
+      renderTopicBreakdown();
+    }
+
+    function renderTopicBreakdown() {
+      const container = document.getElementById('topicBreakdownContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const topicStats = {};
+
+      quizSession.userAnswers.forEach(ans => {
+        const cat = ans.question.category.split('/')[0].trim();
+        if (!topicStats[cat]) {
+          topicStats[cat] = { correct: 0, total: 0 };
+        }
+        topicStats[cat].total++;
+        if (ans.isCorrect) topicStats[cat].correct++;
+      });
+
+      Object.keys(topicStats).forEach(cat => {
+        const stat = topicStats[cat];
+        const pct = Math.round((stat.correct / stat.total) * 100);
+        const item = document.createElement('div');
+        item.style.marginBottom = '0.4rem';
+        item.innerHTML = `
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.2rem;">
+            <span>${escapeHtml(cat)}</span>
+            <span style="font-weight: 700; color: ${pct >= 60 ? '#4ade80' : '#f87171'};">${stat.correct} / ${stat.total} (${pct}%)</span>
+          </div>
+          <div style="height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden;">
+            <div style="height: 100%; width: ${pct}%; background: ${pct >= 60 ? '#10b981' : '#ef4444'};"></div>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    /* ==========================================================================
+       9. REVIEW MODAL & DETAILED REVIEW
+       ========================================================================== */
+    function toggleReviewModal() {
+      const modal = document.getElementById('reviewModal');
+      const isVisible = modal.classList.contains('show');
+      if (!isVisible) {
+        renderReviewContent();
+        modal.classList.add('show');
+      } else {
+        modal.classList.remove('show');
+      }
+    }
+
+    function renderReviewContent() {
+      const container = document.getElementById('reviewQuestionsList');
+      if (!container) return;
+      container.innerHTML = '';
+
+      quizSession.userAnswers.forEach((ans, idx) => {
+        const q = ans.question;
+        const card = document.createElement('div');
+        card.style.background = 'rgba(15, 23, 42, 0.7)';
+        card.style.border = `1px solid ${ans.isCorrect ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`;
+        card.style.borderRadius = '0.75rem';
+        card.style.padding = '1rem';
+
+        const statusBadge = ans.isCorrect
+          ? `<span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399;">✓ Correct (+1)</span>`
+          : `<span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #f87171;">✕ Incorrect (0)</span>`;
+
+        let selectedText = 'Unanswered (Time expired)';
+        if (ans.selectedIdx >= 0 && q.options[ans.selectedIdx]) {
+          selectedText = `${q.options[ans.selectedIdx].si} (${q.options[ans.selectedIdx].en})`;
+        }
+
+        const correctOption = q.options.find(o => o.correct);
+        const correctText = correctOption ? `${correctOption.si} (${correctOption.en})` : '';
+
+        card.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <span style="font-weight: 700; color: #38bdf8; font-size: 0.9rem;">Q${idx + 1}. [${escapeHtml(q.category)}]</span>
+            ${statusBadge}
+          </div>
+          <div style="font-weight: 600; margin-bottom: 0.25rem;">${escapeHtml(q.siText)}</div>
+          <div style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem;">${escapeHtml(q.enText)}</div>
+          
+          <div style="font-size: 0.85rem; background: rgba(0,0,0,0.3); padding: 0.6rem; border-radius: 0.5rem; margin-bottom: 0.4rem;">
+            <div>ඔබ තේරූ පිළිතුර (Your Answer): <strong style="color: ${ans.isCorrect ? '#4ade80' : '#f87171'};">${escapeHtml(selectedText)}</strong></div>
+            <div>නිවැරදි පිළිතුර (Correct Answer): <strong style="color: #4ade80;">${escapeHtml(correctText)}</strong></div>
+          </div>
+          <div style="font-size: 0.8rem; color: #94a3b8;">
+            <strong>පැහැදිලි කිරීම:</strong> ${escapeHtml(q.expSi)}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    /* ==========================================================================
+       10. WHATSAPP AUTO MESSAGE & SHARE
+       ========================================================================== */
+    function shareScoreToWhatsapp() {
+      const score = quizSession.score;
+      const total = quizSession.questions.length;
+      const pct = Math.round((score / total) * 100);
+      const studentName = currentUser ? currentUser.name : 'Student';
+
+      const msg = `*🇱🇰 Sri Lanka A/L ICT & GIT Quiz Portal Result*\n\n` +
+        `👤 *Student:* ${studentName}\n` +
+        `📊 *Score:* ${score} / ${total} (${pct}%)\n` +
+        `⭐ *Status:* Completed 50-Question Examination\n` +
+        `👨‍💻 *Created by:* G.H. Hirusha thathsidu\n\n` +
+        `📢 *Join our Official WhatsApp Channel for A/L ICT Notes & Papers:*\n` +
+        `https://whatsapp.com/channel/0029Vb3rPYPJJhzWpXIfsf2p\n\n` +
+        `💬 *Contact:* +94 74 390 9934`;
+
+      const encoded = encodeURIComponent(msg);
+      window.open(`https://wa.me/?text=${encoded}`, '_blank');
+    }
+
+    /* ==========================================================================
+       11. ADMIN DASHBOARD FEATURES & STUDENT REGISTRY
+       ========================================================================== */
+    function renderAdminDashboard() {
+      const users = getStoredUsers();
+      document.getElementById('adminStatTotalUsers').textContent = users.length;
+
+      let totalQuizzes = 0;
+      let totalScores = 0;
+      let scoredStudentsCount = 0;
+
+      users.forEach(u => {
+        totalQuizzes += (u.attempts || 0);
+        if (u.bestScore !== undefined && u.bestScore !== null) {
+          totalScores += u.bestScore;
+          scoredStudentsCount++;
+        }
+      });
+
+      document.getElementById('adminStatTotalQuizzes').textContent = totalQuizzes;
+      const avg = scoredStudentsCount > 0 ? Math.round((totalScores / (scoredStudentsCount * 50)) * 100) : 0;
+      document.getElementById('adminStatAvgScore').textContent = `${avg}%`;
+
+      // Check webhook status
+      const savedUrl = localStorage.getItem(STORAGE_WEBHOOK_KEY);
+      const badge = document.getElementById('adminStatSyncBadge');
+      if (savedUrl) {
+        badge.textContent = 'Active URL Set';
+        badge.style.color = '#4ade80';
+        document.getElementById('adminWebhookUrlInput').value = savedUrl;
+      } else {
+        badge.textContent = 'Not Set';
+        badge.style.color = '#f59e0b';
+      }
+
+      renderAdminStudentTable(users);
+      renderExcelSpreadsheet();
+    }
+
+    let currentExcelTab = 1;
+
+    function switchExcelTab(tab) {
+      currentExcelTab = tab;
+      const t1 = document.getElementById('excelTab1Btn');
+      const t2 = document.getElementById('excelTab2Btn');
+      if (t1 && t2) {
+        t1.classList.toggle('active', tab === 1);
+        t2.classList.toggle('active', tab === 2);
+      }
+      const formula = document.getElementById('excelFormulaInputText');
+      if (formula) {
+        if (tab === 1) {
+          formula.textContent = '=FILTER(Students_Contacts, Status="Active", Columns=[Name, WhatsApp, City, Marks, Joined])';
+        } else {
+          formula.textContent = '=QUERY(Quiz_Marks_Registry, "SELECT Name, Score, Percentage, Grade, Attempts")';
+        }
+      }
+      renderExcelSpreadsheet();
+    }
+
+    function renderExcelSpreadsheet() {
+      const tbody = document.getElementById('excelLiveGridBody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      const users = getStoredUsers();
+
+      if (users.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td class="row-idx">1</td>
+            <td colspan="6" style="text-align: center; color: #94a3b8; padding: 1.75rem; font-style: italic;">
+              තවමත් කිසිදු ශිෂ්‍යයෙකු ලියාපදිංචි වී නොමැත. (Excel Sheet is empty. New students will auto-appear here!)
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      users.forEach((s, idx) => {
+        const tr = document.createElement('tr');
+        const waNum = s.whatsapp || '+94743909934';
+        const cleanWa = waNum.replace(/\D/g, '');
+        const waChatLink = `https://wa.me/${cleanWa}?text=${encodeURIComponent(`ආයුබෝවන් ${s.name}, මම G.H. Hirusha thathsidu (A/L ICT Quiz Portal).`)}`;
+        const scoreVal = s.bestScore !== undefined ? s.bestScore : (s.score || 0);
+        const scorePct = `${Math.round((scoreVal / 50) * 100)}%`;
+        const gradeVal = scoreVal >= 38 ? 'Grade A' : (scoreVal >= 33 ? 'Grade B' : (scoreVal >= 28 ? 'Grade C' : (scoreVal >= 18 ? 'Grade S' : 'Grade F')));
+        const dateFormatted = s.registeredAt ? new Date(s.registeredAt).toLocaleString('en-US', { hour12: true }) : 'Today';
+
+        if (currentExcelTab === 1) {
+          tr.innerHTML = `
+            <td class="row-idx">${idx + 1}</td>
+            <td><strong style="color: #38bdf8;">${escapeHtml(s.name)}</strong></td>
+            <td><span style="font-family: var(--font-mono); color: #4ade80; font-weight: 700;">'${escapeHtml(s.whatsapp)}</span></td>
+            <td>
+              <a href="${waChatLink}" target="_blank" class="wa-chat-link" style="padding: 0.2rem 0.55rem; font-size: 0.78rem;">
+                💬 Open WhatsApp
+              </a>
+            </td>
+            <td><span class="badge badge-blue">${escapeHtml(s.city || 'Colombo')}</span></td>
+            <td><strong style="color: #fbbf24;">${scoreVal} / 50</strong></td>
+            <td style="color: #94a3b8; font-size: 0.8rem;">${dateFormatted}</td>
+          `;
+        } else {
+          tr.innerHTML = `
+            <td class="row-idx">${idx + 1}</td>
+            <td><strong style="color: #fff;">${escapeHtml(s.name)}</strong></td>
+            <td><strong style="color: #38bdf8;">${scoreVal} / 50</strong></td>
+            <td><span style="color: #4ade80; font-weight: 700;">${scorePct}</span></td>
+            <td><span class="badge ${scoreVal >= 38 ? 'badge-green' : 'badge-blue'}">${gradeVal}</span></td>
+            <td>${s.attempts || 0} Attempts</td>
+            <td style="color: #94a3b8; font-size: 0.8rem;">${dateFormatted}</td>
+          `;
+        }
+        tbody.appendChild(tr);
+      });
+    }
+
+    function copyExcelTableToClipboard() {
+      const users = getStoredUsers();
+      if (users.length === 0) {
+        showToast('Copy කිරීමට දත්ත නොමැත (No data to copy)', 'error');
+        return;
+      }
+      let tsv = "Row\tStudent Name\tWhatsApp Number\tCity\tScore\tPercentage\tDate\n";
+      users.forEach((u, i) => {
+        const score = u.bestScore !== undefined ? u.bestScore : 0;
+        const pct = `${Math.round((score / 50) * 100)}%`;
+        const date = u.registeredAt ? new Date(u.registeredAt).toLocaleDateString() : 'Today';
+        tsv += `${i + 1}\t${u.name}\t${u.whatsapp}\t${u.city}\t${score}\t${pct}\t${date}\n`;
+      });
+      navigator.clipboard.writeText(tsv).then(() => {
+        showToast('Excel දත්ත සාර්ථකව Copy විය! (Excel හෝ Google Sheet එකකට Paste [Ctrl+V] කරන්න)', 'success');
+      }).catch(() => {
+        showToast('Copied to clipboard!', 'success');
+      });
+    }
+
+    function copyAllWhatsappNumbers() {
+      const users = getStoredUsers();
+      if (users.length === 0) {
+        showToast('WhatsApp අංක නොමැත', 'error');
+        return;
+      }
+      const numbers = users.map(u => u.whatsapp).filter(Boolean).join(', ');
+      navigator.clipboard.writeText(numbers).then(() => {
+        showToast(`WhatsApp අංක ${users.length}ක් සාර්ථකව Copy විය!`, 'success');
+      });
+    }
+
+    function renderAdminStudentTable(students) {
+      const tbody = document.getElementById('adminStudentTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      if (students.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="9" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+              තවමත් කිසිදු ශිෂ්‍යයෙකු ලියාපදිංචි වී නොමැත (No registered students yet).
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      students.forEach((s, idx) => {
+        const tr = document.createElement('tr');
+        const waNum = s.whatsapp || '+94743909934';
+        const cleanWa = waNum.replace(/\D/g, '');
+        const waChatLink = `https://wa.me/${cleanWa}?text=${encodeURIComponent(`ආයුබෝවන් ${s.name}, මම G.H. Hirusha thathsidu (A/L ICT Quiz Portal).`)}`;
+
+        tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td><strong style="color: #fff;">${escapeHtml(s.name)}</strong></td>
+          <td>
+            <a href="${waChatLink}" target="_blank" class="wa-chat-link" title="Click to chat directly on WhatsApp">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.983.541 1.764.82 2.796.82 3.18 0 5.767-2.586 5.767-5.766zm-7.031 5.766c.001-3.878 3.153-7.03 7.031-7.03 3.879 0 7.031 3.152 7.031 7.03 0 3.879-3.152 7.031-7.031 7.031-1.196 0-2.342-.316-3.342-.871l-4.689 1.231 1.254-4.577c-.675-1.077-1.254-2.27-1.254-3.814z"/></svg>
+              ${escapeHtml(s.whatsapp)}
+            </a>
+          </td>
+          <td>${escapeHtml(s.email)}</td>
+          <td><span class="badge badge-blue">${escapeHtml(s.city || 'Colombo')}</span></td>
+          <td><strong style="color: #38bdf8;">${s.bestScore !== undefined ? s.bestScore : 0} / 50</strong></td>
+          <td>${s.attempts || 0}</td>
+          <td style="color: var(--text-muted); font-size: 0.8rem;">
+            ${s.registeredAt ? new Date(s.registeredAt).toLocaleDateString() : 'Today'}
+          </td>
+          <td>
+            <button class="btn btn-danger btn-sm" onclick="deleteStudent('${s.id || s.email}')" title="Delete record">
+              Delete
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterAdminStudents() {
+      const query = document.getElementById('adminSearchInput').value.toLowerCase();
+      const users = getStoredUsers();
+      const filtered = users.filter(u => 
+        (u.name && u.name.toLowerCase().includes(query)) ||
+        (u.email && u.email.toLowerCase().includes(query)) ||
+        (u.city && u.city.toLowerCase().includes(query)) ||
+        (u.whatsapp && u.whatsapp.includes(query))
+      );
+      renderAdminStudentTable(filtered);
+    }
+
+    function deleteStudent(idOrEmail) {
+      if (!confirm('මෙම ශිෂ්‍යයාගේ තොරතුරු මකා දැමීමට අවශ්‍ය බව සහතිකද? (Are you sure to delete this student?)')) return;
+      let users = getStoredUsers();
+      users = users.filter(u => u.id !== idOrEmail && u.email !== idOrEmail);
+      saveStoredUsers(users);
+      showToast('ශිෂ්‍යයාගේ තොරතුරු මකා දමන ලදී (Student deleted)', 'info');
+      renderAdminDashboard();
+    }
+
+    function confirmClearAllStudents() {
+      const code = prompt('සියලුම ශිෂ්‍ය දත්ත මකා දැමීමට "CLEAR" ලෙස Type කරන්න (Type CLEAR to confirm):');
+      if (code === 'CLEAR') {
+        saveStoredUsers([]);
+        showToast('සියලුම ශිෂ්‍ය තොරතුරු මකා දමන ලදී (All data cleared)', 'info');
+        renderAdminDashboard();
+      }
+    }
+
+    function populateDemoStudents() {
+      const demoList = [
+        { id: 'u1', name: 'Kavindu Dilshan', email: 'kavindu@gmail.com', password: 'password123', whatsapp: '+94712345678', city: 'Kandy', bestScore: 46, attempts: 3, registeredAt: new Date().toISOString() },
+        { id: 'u2', name: 'Nisansala Jayasinghe', email: 'nisansala@gmail.com', password: 'password123', whatsapp: '+94773456789', city: 'Colombo', bestScore: 42, attempts: 2, registeredAt: new Date().toISOString() },
+        { id: 'u3', name: 'Tharindu Senanayake', email: 'tharindu@gmail.com', password: 'password123', whatsapp: '+94784567890', city: 'Galle', bestScore: 38, attempts: 1, registeredAt: new Date().toISOString() },
+        { id: 'u4', name: 'Chamodi Fernando', email: 'chamodi@gmail.com', password: 'password123', whatsapp: '+94745678901', city: 'Kurunegala', bestScore: 48, attempts: 4, registeredAt: new Date().toISOString() }
+      ];
+      const existing = getStoredUsers();
+      const combined = [...existing, ...demoList];
+      saveStoredUsers(combined);
+      showToast('පරීක්ෂණ දත්ත සාර්ථකව එක් කරන ලදී! (Demo students added)', 'success');
+      renderAdminDashboard();
+    }
+
+    /* ==========================================================================
+       12. EXCEL / CSV DIRECT EXPORT (ADMIN ONLY)
+       ========================================================================== */
+    function exportStudentsToExcel() {
+      const users = getStoredUsers();
+      if (users.length === 0) {
+        showToast('Export කිරීමට ශිෂ්‍ය දත්ත නොමැත (No data to export)', 'error');
+        return;
+      }
+
+      // Generate UTF-8 CSV with Byte Order Mark for proper Excel rendering (Sinhala & English)
+      let csvContent = '\uFEFF';
+      csvContent += 'Index,Full Name,WhatsApp Number,Email Address,City,Best Score (Out of 50),Score Percentage,Total Quiz Attempts,Registration Date\n';
+
+      users.forEach((u, i) => {
+        const name = `"${(u.name || '').replace(/"/g, '""')}"`;
+        const wa = `"${(u.whatsapp || '').replace(/"/g, '""')}"`;
+        const email = `"${(u.email || '').replace(/"/g, '""')}"`;
+        const city = `"${(u.city || '').replace(/"/g, '""')}"`;
+        const score = u.bestScore !== undefined ? u.bestScore : 0;
+        const pct = `${Math.round((score / 50) * 100)}%`;
+        const attempts = u.attempts || 0;
+        const date = u.registeredAt ? new Date(u.registeredAt).toISOString().split('T')[0] : 'N/A';
+
+        csvContent += `${i + 1},${name},${wa},${email},${city},${score},${pct},${attempts},${date}\n`;
+      });
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', `AL_ICT_Students_Registry_${new Date().toISOString().split('T')[0]}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      showToast('Excel (.csv) ගොනුව සාර්ථකව බාගත විය! (Downloaded)', 'success');
+    }
+
+    /* ==========================================================================
+       13. VERCEL APP & GOOGLE SHEETS / CLOUD SYNC
+       ========================================================================== */
+    const GOOGLE_APPS_SCRIPT_TEMPLATE = `function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.tryLock(10000);
+  try {
+    var doc = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = doc.getActiveSheet();
+    if (sheet.getName() === "Sheet1") sheet.setName("Students Registry");
+    setupHeadersIfNeeded(sheet);
+    var data = JSON.parse(e.postData.contents);
+    var student = data.student || data;
+    var timestamp = student.timestamp || new Date().toLocaleString("en-US", { timeZone: "Asia/Colombo" });
+    var event = data.event || student.event || "Student Registration";
+    var name = student.name || "N/A";
+    var whatsapp = "'" + (student.whatsapp || "");
+    var email = student.email || "N/A";
+    var city = student.city || "N/A";
+    var score = student.score !== undefined && student.score !== null ? student.score : "Pending Quiz";
+    var percentage = student.percentage ? (student.percentage + "%") : "N/A";
+    var grade = student.grade || "N/A";
+    sheet.appendRow([timestamp, event, name, whatsapp, email, city, score, percentage, grade]);
+    return ContentService.createTextOutput(JSON.stringify({ status: "success", message: "Saved to Google Sheet successfully!" })).setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({ status: "error", message: err.toString() })).setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function doGet(e) {
+  return ContentService.createTextOutput("Google Sheets Webhook Active for A/L ICT & GIT Portal");
+}
+
+function setupHeadersIfNeeded(sheet) {
+  if (sheet.getLastRow() === 0) {
+    var headers = ["දිනය සහ වේලාව (Date & Time)", "වර්ගය (Event Type)", "ශිෂ්‍යයාගේ නම (Student Name)", "WhatsApp අංකය (WhatsApp Number)", "විද්‍යුත් තැපෑල (Email Address)", "නගරය (City)", "ලකුණු (Score / 50)", "ප්‍රතිශතය (%)", "සාමාර්ථය (Grade)"];
+    sheet.appendRow(headers);
+    var headerRange = sheet.getRange(1, 1, 1, headers.length);
+    headerRange.setBackground("#0f172a").setFontColor("#38bdf8").setFontWeight("bold").setHorizontalAlignment("center");
+    sheet.setFrozenRows(1);
+    sheet.setRowHeight(1, 35);
+  }
+}`;
+
+    function copyGoogleAppsScript() {
+      navigator.clipboard.writeText(GOOGLE_APPS_SCRIPT_TEMPLATE).then(() => {
+        showToast('Google Apps Script එක සාර්ථකව Copy විය! (Copied to Clipboard)', 'success');
+      }).catch(err => {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea');
+        ta.value = GOOGLE_APPS_SCRIPT_TEMPLATE;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('Google Apps Script එක සාර්ථකව Copy විය!', 'success');
+      });
+    }
+
+    function saveWebhookSettings() {
+      const urlInput = document.getElementById('adminWebhookUrlInput');
+      const val = urlInput.value.trim();
+      localStorage.setItem(STORAGE_WEBHOOK_KEY, val);
+      showToast('Google Sheet / Vercel Webhook URL සාර්ථකව සුරකින ලදී!', 'success');
+      renderAdminDashboard();
+    }
+
+    function openVercelConfigModal() {
+      const el = document.getElementById('googleSheetSyncSection');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    async function triggerCloudSync(studentData, eventType) {
+      const payload = {
+        event: eventType === 'registration' ? 'Student Registration' : 'Quiz Completed',
+        name: studentData.name,
+        whatsapp: studentData.whatsapp,
+        email: studentData.email,
+        city: studentData.city,
+        score: studentData.bestScore !== undefined ? studentData.bestScore : studentData.score,
+        total: 50,
+        percentage: studentData.bestScore !== undefined ? Math.round((studentData.bestScore / 50) * 100) : 0,
+        grade: studentData.score >= 38 ? 'A' : (studentData.score >= 33 ? 'B' : (studentData.score >= 28 ? 'C' : 'S')),
+        timestamp: new Date().toISOString(),
+        creator: 'G.H. Hirusha thathsidu'
+      };
+
+      // 1. Try Vercel Serverless Endpoint (/api/save-student)
+      try {
+        fetch('/api/save-student', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+      } catch (e) {}
+
+      // 2. Direct Sync to Admin Configured Google Sheet Webhook URL
+      const customWebhook = localStorage.getItem(STORAGE_WEBHOOK_KEY);
+      if (customWebhook) {
+        try {
+          await fetch(customWebhook, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          console.log("Google Sheets direct sync dispatched for", studentData.name);
+        } catch (err) {
+          console.warn("Direct Google Sheet sync note:", err);
+        }
+      }
+    }
+
+    async function testGoogleSheetSync() {
+      const url = document.getElementById('adminWebhookUrlInput').value.trim();
+      const statusBox = document.getElementById('webhookTestStatus');
+      statusBox.style.display = 'block';
+
+      if (!url) {
+        statusBox.innerHTML = '<span style="color: #ef4444;">⚠️ කරුණාකර පළමුව Google Apps Script Web App URL එක ඇතුළත් කරන්න!</span>';
+        return;
+      }
+
+      statusBox.innerHTML = '<span style="color: #38bdf8;">🔄 Testing: Google Sheet එකට Test Student කෙනෙක් යවමින් පවතී...</span>';
+
+      const testPayload = {
+        event: "Test Verification (පරීක්ෂාව)",
+        name: "Hirusha Thathsidu (Test Entry)",
+        whatsapp: "+94743909934",
+        email: "thathsiduhirusha@gmail.com",
+        city: "Colombo",
+        score: "50 / 50",
+        percentage: "100%",
+        grade: "A (Distinction)",
+        timestamp: new Date().toISOString()
+      };
+
+      try {
+        await fetch(url, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(testPayload)
+        });
+
+        statusBox.innerHTML = `
+          <div style="color: #4ade80; font-weight: 600; margin-bottom: 0.3rem;">
+            ✅ සාර්ථකයි! Test දත්ත Google Sheet වෙත යවන ලදී!
+          </div>
+          <div style="color: #cbd5e1; font-size: 0.8rem;">
+            ඔබගේ Google Sheet එක විවෘත කර බලන්න, <strong>"Hirusha Thathsidu (Test Entry)"</strong> සහ <strong>+94743909934</strong> අංකය නව පේළියක් ලෙස එක්වී තිබෙනු දැකගත හැක!
+          </div>
+        `;
+        showToast('Test Data Sent to Google Sheet!', 'success');
+      } catch (err) {
+        statusBox.innerHTML = `<span style="color: #ef4444;">✕ Connection failed: ${escapeHtml(err.message)}</span>`;
+      }
+    }
+
+    /* ==========================================================================
+       14. UTILITIES & MODALS
+       ========================================================================== */
+    function showAboutModal() {
+      alert(
+        "A/L ICT & GIT Examination Preparation System\n" +
+        "Developed by: G.H. Hirusha thathsidu\n" +
+        "Contact: +94 74 390 9934\n" +
+        "Official Channel: https://whatsapp.com/channel/0029Vb3rPYPJJhzWpXIfsf2p\n\n" +
+        "Features 50 randomized bilingual questions, auto-scoring, admin registry, Excel export, and Vercel cloud sync."
+      );
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    /* ==========================================================================
+       15. INITIALIZATION
+       ========================================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      // Load current user from session
+      const savedUser = getStoredCurrentUser();
+      if (savedUser) {
+        setStoredCurrentUser(savedUser);
+        navigateToDashboard();
+      } else {
+        renderNavUserArea();
+        switchView('authView');
+      }
+
+      // Initialize audio context on first user interaction
+      const unlockAudio = () => {
+        getAudioContext();
+        window.removeEventListener('click', unlockAudio);
+        window.removeEventListener('keydown', unlockAudio);
+      };
+      window.addEventListener('click', unlockAudio);
+      window.addEventListener('keydown', unlockAudio);
+    });
+  </script>
+</body>
+</html>
